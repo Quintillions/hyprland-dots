@@ -71,8 +71,6 @@
   environment = {
     sessionVariables = {
       XDG_SESSION_TYPE = "wayland";
-      XDG_CURRENT_DESKTOP = "niri";
-      XDG_SESSION_DESKTOP = "niri";
       QT_QPA_PLATFORM = "wayland";  
 
       STEAM_RUNTIME = "1";
