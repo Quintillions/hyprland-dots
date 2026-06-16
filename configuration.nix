@@ -37,7 +37,6 @@
   # FOR screen recording and portals
 	hardware.graphics = {
   		enable = true;
-      driSupport32Bit = true;
   		extraPackages = with pkgs; [
     		libva        # Core VA-API library
     		intel-media-driver  # Intel GPU VA-API driver
