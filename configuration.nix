@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports = [
@@ -21,7 +21,18 @@
   # XWayland support
   programs.xwayland.enable = true;
 
-  programs.steam.enable = true;
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  };
+
+  programs.steam = {
+    enable = true;
+    extraPackages = with pkgs; [
+      proton-ge-bin
+    ];
+  }
 
   # FOR screen recording and portals
 	hardware.graphics = {
@@ -39,9 +50,6 @@
   		];
 	};
 
-  xdg.portal = {
-    enable = true;
-  };
 
   services = {
 	dbus.enable = true;
@@ -49,7 +57,6 @@
     upower.enable = lib.mkDefault true;
     power-profiles-daemon.enable = lib.mkDefault true;
 
-    flatpak.enable = true;
 
     xserver.enable = true;
 
