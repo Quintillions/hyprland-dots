@@ -32,7 +32,7 @@
     extraPackages = with pkgs; [
       proton-ge-bin
     ];
-  }
+  };
 
   # FOR screen recording and portals
 	hardware.graphics = {
