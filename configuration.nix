@@ -3,7 +3,7 @@
 {
   imports = [
     /etc/nixos/hardware-configuration.nix
-    ./fonts.nix # Import nix fonts
+    ./fonts.nix
   ];
 
   # Bootloader
@@ -41,35 +41,18 @@
 
   xdg.portal = {
     enable = true;
-    wlr.enable = false; # Use GTK/GNOME portals instead
-    xdgOpenUsePortal = true;
-
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-gnome
-    ];
-
-    configPackages = with pkgs; [
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-gnome
-    ];
   };
 
   services = {
-    # Display manager
 	dbus.enable = true;
     xserver.displayManager.lightdm.enable = false;
-    # Power management
     upower.enable = lib.mkDefault true;
     power-profiles-daemon.enable = lib.mkDefault true;
 
-    # Flatpak support
     flatpak.enable = true;
 
-    # X server
     xserver.enable = true;
 
-    # Pipewire for audio
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -77,7 +60,6 @@
     };
   };
 
-  # Niri (Wayland desktop)
   xdg.mime.enable = true;
   security.polkit.enable = true;
 
@@ -114,20 +96,7 @@
       # ─────────────────────────────
       # 🖥️ Graphics & Display Stack
       # ─────────────────────────────
-      niri
-      cage
-      swaybg
-      swaylock
-      wl-clipboard
-      arandr
-      xbindkeys
-      xdg-utils
-      xwayland
-      xwayland-run
-      xwayland-satellite
-      kdePackages.polkit-kde-agent-1
       ffmpeg
-      mpv
 
       # ─────────────────────────────
       # 🧩 Wayland / X / Rendering Libraries
@@ -144,20 +113,6 @@
       meson
       ninja
       pcre2
-
-      # ─────────────────────────────
-      # 📸 Screen Recording & Portal Integration
-      # ─────────────────────────────
-      gpu-screen-recorder
-      gpu-screen-recorder-gtk
-      xdg-desktop-portal
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-gnome
-
-      # ─────────────────────────────
-      # 🎨 Theming & Configuration
-      # ─────────────────────────────
-      matugen
     ];
   };
 

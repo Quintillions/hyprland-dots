@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    hyprland.url = "github:hyprwm/Hyprland";an
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -13,21 +14,7 @@
       url = "github:outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.quickshell.follows = "quickshell";
-    };
     
-    niri = {
-      url = "github:sodiboo/niri-flake";   # ← Niri's official flake
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    
-      matugen = {
-        url = "github:/InioX/Matugen";
-    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
@@ -38,8 +25,6 @@
 
       modules = [
         ./configuration.nix
-        ./noctalia.nix
-        # Add Home Manager as a module
         home-manager.nixosModules.home-manager
         {
           home-manager = {
