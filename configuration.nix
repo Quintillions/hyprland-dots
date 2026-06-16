@@ -37,7 +37,6 @@
   # FOR screen recording and portals
 	hardware.graphics = {
   		enable = true;
-      driSupport = true;
       driSupport32Bit = true;
   		extraPackages = with pkgs; [
     		libva        # Core VA-API library
