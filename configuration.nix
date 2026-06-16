@@ -70,9 +70,6 @@
 
   environment = {
     sessionVariables = {
-      XDG_SESSION_TYPE = "wayland";
-      QT_QPA_PLATFORM = "wayland";  
-
       STEAM_RUNTIME = "1";
       SDL_VIDEODRIVER = "wayland,x11";
       MESA_GL_VERSION_OVERRIDE = "4.6";
