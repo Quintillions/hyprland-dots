@@ -19,10 +19,11 @@
   time.timeZone = "Asia/Manila";
 
   # XWayland support
-  programs.xwayland.enable = true;
+
 
   programs.hyprland = {
     enable = true;
+    xwayland.enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
@@ -34,28 +35,16 @@
     ];
   };
 
-  # FOR screen recording and portals
 	hardware.graphics = {
   		enable = true;
-  		extraPackages = with pkgs; [
-    		libva        # Core VA-API library
-    		intel-media-driver  # Intel GPU VA-API driver
-        mesa
-        vulkan-loader
-        vulkan-tools
-        vulkan-validation-layers
-        intel-compute-runtime
-  		];
+      enable32Bit = true;
 	};
 
 
   services = {
 	dbus.enable = true;
     xserver.displayManager.lightdm.enable = false;
-    upower.enable = lib.mkDefault true;
     power-profiles-daemon.enable = lib.mkDefault true;
-
-
     xserver.enable = true;
 
     pipewire = {
