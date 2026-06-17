@@ -2,8 +2,8 @@
 
 {
     imports = [ 
-        ./chatnwhatnot.nix
-        ./alacritty.nix
+        ./modules/homepackages.nix
+        ./modules/alacritty.nix
     ];
     
     home.file.".config/hypr".source = ./config/hypr;
