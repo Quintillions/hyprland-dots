@@ -20,7 +20,6 @@
 
   # XWayland support
 
-  programs.kitty.enable = true;
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -81,6 +80,7 @@
       power-profiles-daemon
       hwdata
       seatd
+      kitty
 
       # ─────────────────────────────
       # 🖥️ Graphics & Display Stack
