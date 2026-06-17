@@ -22,7 +22,6 @@
     home.packages = [
         pkgs.pulseaudio
         pkgs.playerctl
-        pkgs.quickshell
 
     ];
 }

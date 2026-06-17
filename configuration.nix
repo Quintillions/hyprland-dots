@@ -75,6 +75,7 @@
       hwdata
       seatd
       kitty
+      quickshell
 
       # ─────────────────────────────
       # 🖥️ Graphics & Display Stack
