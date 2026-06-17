@@ -34,6 +34,7 @@
   };
   programs.alacritty = {
     enable = true;
+    theme = "catppuccin_macchiato";
     settings = {
       window = {
         padding = {
@@ -55,7 +56,6 @@
 
   
     };
-    theme = "catppuccin_macchiato";
 
   };
 }
