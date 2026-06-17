@@ -20,14 +20,14 @@
 
   # XWayland support
 
-
+  programs.kitty.enable = true;
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
-
+f
   programs.steam = {
     enable = true;
     extraPackages = with pkgs; [
