@@ -1,4 +1,4 @@
-{config, pkgs,inputs, ...}:
+{config, pkgs, ...}:
 
 {
     imports = [ 
@@ -22,7 +22,7 @@
     home.packages = [
         pkgs.pulseaudio
         pkgs.playerctl
-        inputs.quickshell.packages.${pkgs.system}.default
+        pkgs.quickshell
 
     ];
 }
