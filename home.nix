@@ -6,6 +6,10 @@
         ./alacritty.nix
     ];
     
+    home.file.".config/hypr".source = ./config/hypr;
+    home.file.".config/quickshell".source = ./config/quickshell;
+
+
     home.username = "quin";
     home.homeDirectory = "/home/quin";
     home.stateVersion = "25.05";
