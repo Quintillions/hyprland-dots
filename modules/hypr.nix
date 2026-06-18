@@ -11,8 +11,8 @@
 
   environment.systemPackages = with pkgs; [
     hyprpaper
-    quickshell
     wallust
+    inputs.quickshell.packages.${pkgs.system}.default
     
   ];
 }
