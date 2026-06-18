@@ -11,6 +11,7 @@
   environment.systemPackages = with pkgs; [
     hyprpaper
     wallust
+    hyprpicker
     jq
     inputs.quickshell.packages.${pkgs.system}.default
 
