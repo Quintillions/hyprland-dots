@@ -1,7 +1,6 @@
 { config, inputs, pkgs, ... }:
 
 {
-  programs.foot.enable = true;
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
