@@ -49,20 +49,6 @@ ShellRoot {
         value: Flags.dnd
     }
 
-    PanelWindow {
-        id: inhibitWin
-        visible: Flags.keepAwake
-        implicitWidth: 1
-        implicitHeight: 1
-        color: "transparent"
-        exclusionMode: ExclusionMode.Ignore
-        WlrLayershell.layer: WlrLayer.Background
-        WlrLayershell.namespace: "pill-inhibit"
-        WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
-        anchors { top: true; left: true }
-        IdleInhibitor { window: inhibitWin; enabled: Flags.keepAwake }
-    }
-
     /**
      * Only these raw events can change what the pill renders (per-monitor
      * active workspace, minimized toplevels, monitor hotplug). Everything
