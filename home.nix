@@ -3,11 +3,13 @@
 {
     imports = [ 
         ./modules/homepackages.nix
-        ./modules/alacritty.nix
+        ./modules/terminal.nix
     ];
     
     home.file.".config/hypr".source = ./config/hypr;
     home.file.".config/quickshell".source = ./config/quickshell;
+    home.file.".config/wallust".source = ./config/wallust;
+    home.file.".config/fastfetch".source = ./config/fastfetch;
 
 
     home.username = "quin";

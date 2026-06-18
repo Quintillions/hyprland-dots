@@ -17,8 +17,6 @@
         power-profiles-daemon
         hwdata
         seatd
-        kitty
-        quickshell
 
         # ─────────────────────────────
         # 🖥️ Graphics & Display Stack

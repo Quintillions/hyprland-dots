@@ -32,6 +32,11 @@
       ];
     }; 
   };
+  
+  programs.kitty = {
+    enable = true;
+    };
+
   programs.alacritty = {
     enable = true;
     theme = "catppuccin_macchiato";
