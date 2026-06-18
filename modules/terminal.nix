@@ -24,6 +24,11 @@
     initContent = lib.mkOrder 1500 "
       fastfetch
     ";
+    
+    shellAliases = {
+      nrsif = "sudo nixos-rebuild switch --impure --flake .";
+    };
+
     oh-my-zsh = {
       enable = true;
       theme = "xiong-chiamiov-plus";
