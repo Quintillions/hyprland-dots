@@ -28,8 +28,13 @@ Item {
 
     readonly property string activeName: {
         var mons = Hyprland.monitors.values;
-        if (mons.length > 0)
-            return mons[0].activeWorkspace ? mons[0].activeWorkspace.name : "";
+
+        for (let i = 0; i < mons.length; i++) {
+            if (mons[i].name === workspaces.screenName) {
+                return mons[i].activeWorkspace ? mons[i].activeWorkspace.name : "";
+            }
+        }
+
         return "";
     }
 
