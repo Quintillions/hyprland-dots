@@ -57,7 +57,7 @@
                
         };
 
-        size = 15;
+        size = 12;
       };
       window = {
         padding = {
