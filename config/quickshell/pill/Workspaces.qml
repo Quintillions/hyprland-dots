@@ -23,16 +23,13 @@ Item {
     property real gap: 4 * s
 
     readonly property var range: {
-        if (screenName === "DP-1") return [1, 2, 3, 4, 5];
-        if (screenName === "HDMI-A-1") return [6, 7, 8, 9, 10];
-        return [];
+        return [1, 2, 3, 4, 5];
     }
 
     readonly property string activeName: {
         var mons = Hyprland.monitors.values;
-        for (var i = 0; i < mons.length; i++)
-            if (mons[i].name === screenName)
-                return mons[i].activeWorkspace ? mons[i].activeWorkspace.name : "";
+        if (mons.length > 0)
+            return mons[0].activeWorkspace ? mons[0].activeWorkspace.name : "";
         return "";
     }
 
