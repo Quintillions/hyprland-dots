@@ -18,7 +18,15 @@
     jq
     inputs.quickshell.packages.${pkgs.system}.default
     inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
+    wireplumber
+    libva
+    intel-media-driver
 
     
   ];
+  environment.sessionVariables = {
+    XDG_CURRENT_DESKTOP = "Hyprland";
+    XDG_SESSION_DESKTOP = "Hyprland";
+    XDG_SESSION_TYPE = "wayland";
+  };
 }
