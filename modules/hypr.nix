@@ -16,7 +16,6 @@
     jq
     inputs.quickshell.packages.${pkgs.system}.default
     inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
-    xdg-desktop-
 
     
   ];
