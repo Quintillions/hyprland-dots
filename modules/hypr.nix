@@ -10,6 +10,7 @@
 
   environment.systemPackages = with pkgs; [
     hyprpaper
+    awww
     wallust
     hyprpicker
     hypridle
