@@ -9,7 +9,6 @@
     python3
     lua
     lazygit
-    docker
 
 
     # system info
@@ -20,9 +19,9 @@
     gparted
 
     # Coding
-    jetbrains.pycharm-community
-    vscode
-    netbeans
+    # jetbrains.pycharm-community
+    # vscode
+    # netbeans
 
 
   ];

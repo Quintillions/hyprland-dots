@@ -12,6 +12,7 @@
     hyprpaper
     wallust
     hyprpicker
+    hypridle
     jq
     inputs.quickshell.packages.${pkgs.system}.default
 

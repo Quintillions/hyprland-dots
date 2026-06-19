@@ -38,10 +38,26 @@
     }; 
   };
 
+  programs.fastfetch = {
+    enable = true;
+    
+    settings = {
+
+    };
+  };
+
   programs.alacritty = {
     enable = true;
     theme = "catppuccin_macchiato";
     settings = {
+      font = {
+        normal = {
+          family = "JetBrainsMono Nerd Font";
+          style = "Regular";
+          
+      
+        };
+      };
       window = {
         padding = {
           x = 8;
