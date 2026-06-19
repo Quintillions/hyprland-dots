@@ -21,7 +21,8 @@
     wireplumber
     libva
     intel-media-driver
-
+    grim
+    slurp
     
   ];
   environment.sessionVariables = {
