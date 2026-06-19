@@ -11,12 +11,6 @@
     lazygit
 
 
-    # system info
-    btop
-    fastfetch
-    nitch
-    gdu
-    gparted
 
     # Coding
     # jetbrains.pycharm-community

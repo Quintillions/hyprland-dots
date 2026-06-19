@@ -15,6 +15,9 @@
     rar
     gnutar
     cava
+    btop
+    nitch
+    gparted
     
   ];
   programs.zsh = {

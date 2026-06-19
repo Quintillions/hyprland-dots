@@ -13,15 +13,9 @@
         iproute2
         parted
         gcc
-        plymouth
         power-profiles-daemon
         hwdata
         seatd
-
-        # ─────────────────────────────
-        # 🖥️ Graphics & Display Stack
-        # ─────────────────────────────
-        ffmpeg
 
         # ─────────────────────────────
         # 🧩 Wayland / X / Rendering Libraries
