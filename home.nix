@@ -4,6 +4,7 @@
     imports = [ 
         ./modules/homepackages.nix
         ./modules/terminal.nix
+        ./modules/gtk.nix
     ];
     
     home.file.".config/hypr".source = ./config/hypr;
