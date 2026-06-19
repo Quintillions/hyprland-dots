@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     hyprland.url = "github:hyprwm/Hyprland";
+    awww.url = = "git+https://codeberg.org/LGFae/awww";
 
     home-manager = {
       url = "github:nix-community/home-manager";

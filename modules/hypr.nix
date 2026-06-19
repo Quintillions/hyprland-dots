@@ -10,12 +10,12 @@
 
   environment.systemPackages = with pkgs; [
     hyprpaper
-    awww
     wallust
     hyprpicker
     hypridle
     jq
     inputs.quickshell.packages.${pkgs.system}.default
+    inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
 
     
   ];
