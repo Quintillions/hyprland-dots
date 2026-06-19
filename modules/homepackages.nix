@@ -4,6 +4,7 @@
     vesktop
     libreoffice
     spicetify-cli
+    discord
         
     # dev
     python3
