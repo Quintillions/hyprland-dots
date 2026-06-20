@@ -28,6 +28,7 @@
     slurp
     satty
     cliphist
+    ddcutil
 
 
     
