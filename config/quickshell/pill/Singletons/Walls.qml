@@ -96,11 +96,14 @@ Singleton {
                         continue;
                     var path = lines[i].substring(tab + 1);
                     var name = path.substring(path.lastIndexOf("/") + 1);
+                    var dot = name.lastIndexOf(".");
+                    var base = dot > 0 ? name.substring(0, dot) : name;
+
                     out.push({
                         path: path,
                         name: name,
                         mtime: parseFloat(lines[i].substring(0, tab)),
-                        thumb: root.thumbDir + name + ".png"
+                        thumb: root.thumbDir + "/" + base + ".png"
                     });
                 }
                 root.entries = out;
