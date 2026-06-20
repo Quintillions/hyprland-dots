@@ -9,7 +9,11 @@
     python3
     lua
     lazygit
+    
 
+    calibre
+    obs-studio
+    openrgb
 
 
     # Coding
