@@ -30,7 +30,7 @@
 
 
   services = {
-	dbus.enable = true;
+	  dbus.enable = true;
     xserver.displayManager.lightdm.enable = false;
     power-profiles-daemon.enable = lib.mkDefault true;
     xserver.enable = true;
@@ -41,6 +41,8 @@
       alsa.enable = true;
       pulse.enable = true;
     };
+
+    flatpak.enable = true;
   };
 
   xdg.mime.enable = true;
