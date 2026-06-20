@@ -41,8 +41,12 @@
       alsa.enable = true;
       pulse.enable = true;
     };
+    
+    cloudflare-warp.enable = true;
 
     flatpak.enable = true;
+
+
   };
 
   xdg.mime.enable = true;
