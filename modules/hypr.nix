@@ -32,7 +32,7 @@
 
     
     kdePackages.dolphin
-
+    linux-wallpaperengine
     
   ];
   environment.sessionVariables = {
