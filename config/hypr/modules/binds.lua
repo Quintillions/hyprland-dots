@@ -17,7 +17,7 @@ hl.bind(mod .. " + mouse_up",   hl.dsp.focus({ workspace = "r-1" }))
 hl.bind(mod .. " + mouse_down", hl.dsp.focus({ workspace = "r+1" }))
 
 for i = 1, 5 do
-    hl.bind(mod .. " + " .. i, hl.dsp.workspace.focus(i))
+    hl.bind(mod .. " + " .. i, hl.dsp.focus({ workspace = i}))
 end
 
 hl.bind(mod .. " + d",          hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/hypr/scripts/launcher.sh"))
