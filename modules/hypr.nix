@@ -11,19 +11,27 @@
   xdg.portal.enable = true;
 
   environment.systemPackages = with pkgs; [
+    inputs.quickshell.packages.${pkgs.system}.default
+    inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
+    wireplumber
+    libva
+    intel-media-driver
+
+
     hyprpaper
     wallust
     hyprpicker
     hypridle
     jq
     imagemagick
-    inputs.quickshell.packages.${pkgs.system}.default
-    inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
-    wireplumber
-    libva
-    intel-media-driver
     grim
-    slurp
+    satty
+    cliphist
+
+
+    
+    kdePackages.dolphin
+
     
   ];
   environment.sessionVariables = {
