@@ -25,6 +25,7 @@
     jq
     imagemagick
     grim
+    slurp
     satty
     cliphist
 
