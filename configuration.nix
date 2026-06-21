@@ -23,7 +23,11 @@
       proton-ge-bin
     ];
   };
-
+  hardware.opentabletdriver = {
+    enable = true;
+    daemon.enable =true;
+  
+  };
 	hardware.graphics = {
   		enable = true;
       enable32Bit = true;
@@ -49,6 +53,20 @@
 
 
   };
+
+programs.appimage.enable = true;
+programs.appimage.binfmt = true;
+programs.appimage.package = pkgs.appimage-run.override 
+{
+  extraPkgs = pkgs: 
+  [
+    pkgs.icu
+    pkgs.libxcrypt-legacy
+    pkgs.python312
+    pkgs.python312Packages.torch
+  ]; 
+};
+
 
   xdg.mime.enable = true;
   

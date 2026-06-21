@@ -36,6 +36,8 @@
     linux-wallpaperengine
     wl-clipboard
   ];
+  services.hypridle.enable = true;
+  
   environment.sessionVariables = {
     XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_DESKTOP = "Hyprland";

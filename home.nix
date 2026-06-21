@@ -12,7 +12,6 @@
     home.file.".config/wallust".source = ./config/wallust;
     home.file.".config/fastfetch".source = ./config/fastfetch;
 
-
     home.username = "quin";
     home.homeDirectory = "/home/quin";
     home.stateVersion = "25.05";

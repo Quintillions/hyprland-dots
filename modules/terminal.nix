@@ -30,6 +30,8 @@
     
     shellAliases = {
       nrsif = "sudo nixos-rebuild switch --impure --flake .";
+      warp-on = "warp-cli connect";
+      warp-off = "warp-cli disconnect";
     };
 
     oh-my-zsh = {
