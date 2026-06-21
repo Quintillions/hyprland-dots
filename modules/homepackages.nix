@@ -14,7 +14,7 @@
     calibre
     obs-studio
     openrgb
-
+    vscode
 
     # Coding
     # jetbrains.pycharm-community
