@@ -46,10 +46,6 @@
 
     flatpak.enable = true;
 
-    hardware = {
-      openrgb.enable = true;
-    };
-
 
   };
 
