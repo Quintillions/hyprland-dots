@@ -15,6 +15,7 @@
 
 
   # XWayland support
+  # fuck openrgb
 
   programs.steam = {
     enable = true;
