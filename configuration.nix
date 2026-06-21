@@ -10,6 +10,7 @@
     ./modules/locales.nix
     ./modules/syspackages.nix
     ./modules/users.nix
+    ./modules/spotify.nix
 
   ];
 
