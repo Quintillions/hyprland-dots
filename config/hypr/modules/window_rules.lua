@@ -31,14 +31,14 @@ hl.window_rule({
 
 hl.window_rule({
     name  = "float-ghosttype",
-    match = { class = "Ghosttype-app" },
-    float = true,
+    match = { class = "[Aa]lacritty"},
 })
 
 hl.window_rule({
     name  = "float-spotify",
     match = { class = "[Ss]potify" },
     float = true,
+    workspace = "5 silent",
 })
 
 hl.window_rule({
