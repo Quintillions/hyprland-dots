@@ -556,6 +556,7 @@
         "hyprland": "hyprland",
         "nixpkgs": "nixpkgs_3",
         "quickshell": "quickshell",
+        "silentSDDM": "silentSDDM",
         "spicetify-nix": "spicetify-nix"
       }
     },
@@ -577,6 +578,26 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "silentSDDM": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1782447584,
+        "narHash": "sha256-W9dRFuvjfRRihrbYNoXUHT2M7vtWoMfKkyhoot6J7ik=",
+        "owner": "uiriansan",
+        "repo": "SilentSDDM",
+        "rev": "d8361666609fd1a65b8fd5d3ec433453970b50ba",
+        "type": "github"
+      },
+      "original": {
+        "owner": "uiriansan",
+        "repo": "SilentSDDM",
         "type": "github"
       }
     },

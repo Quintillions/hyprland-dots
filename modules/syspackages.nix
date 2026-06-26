@@ -16,6 +16,7 @@
         power-profiles-daemon
         hwdata
         seatd
+        rocmPackages.rocm-smi
 
         # ─────────────────────────────
         # 🧩 Wayland / X / Rendering Libraries
@@ -26,12 +27,10 @@
         libinput
         libxkbcommon
         libdisplay-info
-        libliftoff
-        pixman
         glibc
-        meson
-        ninja
-        pcre2
+      
+        pavucontrol
+      
         
 
 

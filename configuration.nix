@@ -11,6 +11,7 @@
     ./modules/syspackages.nix
     ./modules/users.nix
     ./modules/spotify.nix
+    ./modules/sddm.nix
 
   ];
 
@@ -20,7 +21,7 @@
 
   programs.steam = {
     enable = true;
-    extraPackages = with pkgs; [
+    extraCompatPackages = with pkgs; [
       proton-ge-bin
     ];
   };
@@ -34,8 +35,14 @@
       enable32Bit = true;
 	};
 
-
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    # Add any missing dynamic libraries for unpackaged programs
+    # here, NOT in environment.systemPackages
+  ];
+  
   services = {
+    udisks2.enable = true;
 	  dbus.enable = true;
     xserver.displayManager.lightdm.enable = false;
     power-profiles-daemon.enable = lib.mkDefault true;

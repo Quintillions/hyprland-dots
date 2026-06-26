@@ -48,3 +48,33 @@ hl.window_rule({
     size   = { 1500, 850 },
     center = true,
 })
+hl.window_rule({
+    name = "Steam Friends",
+    match = {
+        title = "Friends List",
+    },
+
+    float = true,
+    opacity = "1 1",
+    size = "800 800",
+    move = "200 200",
+})
+
+hl.window_rule({
+    name = "Steam Settings",
+    match = {
+        title = "Steam Settings",
+    },
+
+    float = true,
+    opacity = "1 1",
+})
+
+hl.window_rule({
+    name = "Steam Property Float",
+    float = true,
+    match = {
+        class = "^(steam)$",
+        title = "negative:^(Steam)$",
+    },
+})

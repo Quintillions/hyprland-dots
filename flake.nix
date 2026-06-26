@@ -7,6 +7,11 @@
     awww.url = "git+https://codeberg.org/LGFae/awww";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
+    silentSDDM = {
+      url = "github:uiriansan/SilentSDDM";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

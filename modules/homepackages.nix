@@ -15,6 +15,7 @@
     obs-studio
     openrgb
     vscode
+    vlc
 
     # Coding
     # jetbrains.pycharm-community

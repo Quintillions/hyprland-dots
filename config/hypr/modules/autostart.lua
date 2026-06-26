@@ -8,6 +8,6 @@ hl.on("hyprland.start", function()
     hl.exec_cmd(os.getenv("HOME") .. "/.config/hypr/scripts/lock-daemon.sh")
     hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
     hl.exec_cmd("systemctl --user enable opentabletdriver.service --now")
-    hl.exec_cmd("systemctl --user enable --now hypridle.service")
+    hl.exec_cmd("hypridle")
     
 end)
