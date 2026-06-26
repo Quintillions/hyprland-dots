@@ -8,4 +8,12 @@
       theme = "rei";
       # settings = { ... }; see example in module
     };
+    
+    services.displayManager = {
+      sddm = {
+        enable = true;
+        wayland.enable = true;
+      };
+    };
+
 }

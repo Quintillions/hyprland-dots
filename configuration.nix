@@ -11,7 +11,7 @@
     ./modules/syspackages.nix
     ./modules/users.nix
     ./modules/spotify.nix
-    ./modules/sddm.nix
+    # ./modules/sddm.nix
 
   ];
 
@@ -44,9 +44,8 @@
   services = {
     udisks2.enable = true;
 	  dbus.enable = true;
-    xserver.displayManager.lightdm.enable = false;
     power-profiles-daemon.enable = lib.mkDefault true;
-    xserver.enable = true;
+    # xserver.enable = true;
 
     pipewire = {
       enable = true;
@@ -54,7 +53,16 @@
       alsa.enable = true;
       pulse.enable = true;
     };
-    
+
+    displayManager.ly = {
+      enable = true;
+      settings = {
+        animation = ./config/ly/blackhole-smooth-240x67.dur
+
+      };
+
+    };
+
     cloudflare-warp.enable = true;
 
     flatpak.enable = true;
