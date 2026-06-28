@@ -11,6 +11,7 @@
     ./modules/syspackages.nix
     ./modules/users.nix
     ./modules/spotify.nix
+    ./modules/openrgb.nix
     # ./modules/sddm.nix
 
   ];
@@ -57,7 +58,8 @@
     displayManager.ly = {
       enable = true;
       settings = {
-        animation = ./config/ly/blackhole-smooth-240x67.dur
+        animation = "gameoflife";
+        auto_login_session = "hyprland";
 
       };
 
