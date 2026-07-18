@@ -11,7 +11,7 @@
     ./modules/syspackages.nix
     ./modules/users.nix
     ./modules/spotify.nix
-    ./modules/openrgb.nix
+    # ./modules/openrgb.nix
     # ./modules/sddm.nix
 
   ];

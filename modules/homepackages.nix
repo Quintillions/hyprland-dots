@@ -12,8 +12,6 @@
     
 
     calibre
-    obs-studio
-    openrgb
     vscode
     vlc
 

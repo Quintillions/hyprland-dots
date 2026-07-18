@@ -15,16 +15,24 @@ hl.config({
         gaps_in     = 6,
         gaps_out    = 12,
         border_size = 2,
-        layout      = "dwindle",
-        resize_on_border = true,
+        layout      = "scrolling",
+        resize_on_border = false,
         ["col.active_border"]   = active,
         ["col.inactive_border"] = inactive,
+    },
+    scrolling = {
+        column_width          = 0.5,
+        fullscreen_on_one_column = true,
+        follow_focus          = true,
+        wrap_focus            = true,
+        wrap_swapcol          = true,
+        focus_fit_method      = 0,
     },
     decoration = {
         rounding         = 12,
         rounding_power   = 4,
-        active_opacity   = 1.0,
-        inactive_opacity = 1.0,
+        active_opacity   = 1,
+        inactive_opacity = 0.90,
         shadow = {
             enabled      = true,
             range        = 12,
@@ -39,6 +47,11 @@ hl.config({
             noise             = 0.01,
             new_optimizations = true,
         },
+    },
+    misc = {
+        force_default_wallpaper = 0,
+        disable_hyprland_logo   = false,
+        disable_splash_rendering = true,
     },
 })
 

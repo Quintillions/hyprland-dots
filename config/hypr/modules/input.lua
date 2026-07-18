@@ -1,4 +1,10 @@
 hl.config({
+    misc = {
+        focus_on_activate = true,
+    },
+})
+
+hl.config({
     input = {
         kb_layout          = "us",
         follow_mouse       = 1,

@@ -38,6 +38,7 @@
 
         cloudflare-warp
         flatpak
+        vesktop
       ];
     };
 }

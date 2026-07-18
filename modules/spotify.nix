@@ -11,10 +11,9 @@
       enable = true;
       theme = spicePkgs.themes.text;
       enabledExtensions = with spicePkgs.extensions; [
-       adblockify
-       spicyLyrics
-       popupLyrics
-       shuffle # shuffle+ (special characters are sanitized out of extension names)
+        adblockify
+        spicyLyrics
+        shuffle # shuffle+ (special characters are sanitized out of extension names)
      ];
   };
 

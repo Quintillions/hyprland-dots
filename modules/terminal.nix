@@ -15,7 +15,7 @@
     rar
     gnutar
     cava
-    btop
+    btop-rocm
     nitch
     gparted
     
