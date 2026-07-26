@@ -32,10 +32,6 @@
 
     
     kdePackages.dolphin
-    kdePackages.kio
-    kdePackages.kio-fuse
-    kdePackages.kio-extras
-    kdePackages.qtsvg
     linux-wallpaperengine
     wl-clipboard
   ];

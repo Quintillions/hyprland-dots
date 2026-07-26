@@ -9,36 +9,35 @@
       size = 16;
     };
 
-    qt = {
-      enable = true;
-
-      theme = {
-        package = pkgs.flat-remix-gtk;
-        name = "Flat-Remix-GTK-Grey-Darkest";
-      };
-
-      font = {
-        name = "JetBrainsMono Nerd Font";
-        size = 12;
-      };
+  qt = {
+    enable = true;
+    
+    platformTheme = {  
+      name = "kde";
     };
 
-    gtk = {
-      enable = true;
-
-      theme = {
-        package = pkgs.flat-remix-gtk;
-        name = "Flat-Remix-GTK-Grey-Darkest";
-      };
-
-      iconTheme = {
-        package = pkgs.adwaita-icon-theme;
-        name = "Adwaita";
-      };
-
-      font = {
-        name = "JetBrainsMono Nerd Font";
-        size = 12;
-      };
+    style = {
+      name = "adwaita-dark";
     };
+
+  };
+
+  gtk = {
+    enable = true;
+
+    theme = {
+      package = pkgs.flat-remix-gtk;
+      name = "Flat-Remix-GTK-Grey-Darkest";
+    };
+
+    iconTheme = {
+      package = pkgs.adwaita-icon-theme;
+      name = "Adwaita";
+    };
+
+    font = {
+      name = "JetBrainsMono Nerd Font";
+      size = 12;
+    };
+  };
 }
