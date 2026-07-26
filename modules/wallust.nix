@@ -4,9 +4,10 @@
     enable = true;
 
     settings = {
-      backend = "kmeans";
+      backend = "resized";
       color_space = "lab";
       palette = "softdark";
+      fallback_generator = "complementary";
 
         templates = {
 
@@ -20,15 +21,13 @@
           template = "alacritty-colors.toml";
         };
 
-        "fastfetch.config.jsonc" = {
+        "fastfetch.jsonc" = {
           target = "~/.config/fastfetch/config.jsonc";
-          template = "fastfetch.config.jsonc";
+          template = "fastfetch.jsonc";
         };
 
 
       };
     };
-
-
-
+  };
 }
