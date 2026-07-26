@@ -56,6 +56,8 @@
     enable = true;
     # theme = "catppuccin_macchiato";
     settings = {
+      import = ["~/.cache/wallust/alacritty-colors.toml"];
+
       font = {
         normal = {
           family = "JetBrainsMono Nerd Font";

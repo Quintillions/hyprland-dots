@@ -19,7 +19,6 @@
 
 
     hyprpaper
-    wallust
     hyprpicker
     hypridle
     jq
