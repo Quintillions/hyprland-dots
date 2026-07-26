@@ -34,6 +34,9 @@
 
     
     kdePackages.dolphin
+    kdePackages.kservice
+    kdePackages.kded
+    kdePackages.kde-cli-tools
     kdePackages.kio
     kdePackages.kio-fuse
     kdePackages.kio-extras

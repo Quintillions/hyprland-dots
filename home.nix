@@ -27,6 +27,10 @@
         pkgs.playerctl
 
     ];
+
+    systemd.user.sessionVariables = {
+        XDG_MENU_PREFIX = "plasma-";
+        };
 }
 
 

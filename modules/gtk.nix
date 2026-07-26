@@ -15,7 +15,7 @@
     platformTheme.name = "gtk";
   
     style = {
-      name = "Adwaita-Dark";
+      name = "adwaita-dark";
     };
 
   };
@@ -38,4 +38,5 @@
       size = 12;
     };
   };
+
 }
