@@ -10,6 +10,7 @@
     
     home.file.".config/hypr".source = ./config/hypr;
     home.file.".config/quickshell".source = ./config/quickshell;
+    home.file.".config/wallust".source = ./config/wallust;
 
     home.username = "quin";
     home.homeDirectory = "/home/quin";
