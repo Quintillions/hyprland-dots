@@ -9,6 +9,20 @@
       size = 16;
     };
 
+    qt = {
+      enable = true;
+
+      theme = {
+        package = pkgs.flat-remix-gtk;
+        name = "Flat-Remix-GTK-Grey-Darkest";
+      };
+
+      font = {
+        name = "JetBrainsMono Nerd Font";
+        size = 12;
+      };
+    };
+
     gtk = {
       enable = true;
 
