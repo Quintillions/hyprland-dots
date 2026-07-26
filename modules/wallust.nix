@@ -101,9 +101,8 @@
                 { "type": "shell", "key": "  shell", "format": "{exe-name}" },
                 { "type": "terminal", "key": "  term", "format": "{pretty-name}" },
                 { "type": "custom", "key": " 󰂜 bar", "format": "pill (quickshell)" },
-                { "type": "custom", "key": " 󰄀 shot", "format": "rishot" },
+                { "type": "custom", "key": " 󰄀 shot", "format": "grim + slurp + satty" },
                 { "type": "custom", "key": "  font", "format": "JetBrains Mono Nerd" },
-                { "type": "command", "key": " 󰸉 wall", "text": "basename \"$(cat ${XDG_STATE_HOME:-$HOME/.local/state}/ricelin-wallpaper)\"" },
                 "break",
                 { "type": "colors", "symbol": "block", "block": { "width": 3, "range": [2, 7] }, "paddingLeft": 2 },
                 "break"
