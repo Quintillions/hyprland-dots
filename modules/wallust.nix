@@ -7,9 +7,8 @@
       backend = "kmeans";
       color_space = "lab";
       palette = "softdark";
-    };
 
-    templates = {
+      templates = {
 
       "hypr-colors.lua" = {
         target = "~/.cache/wallust/hypr-colors.lua";
@@ -114,6 +113,9 @@
 
 
     };
+    };
+
+
     
   };
 }
