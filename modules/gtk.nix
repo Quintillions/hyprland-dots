@@ -11,13 +11,11 @@
 
   qt = {
     enable = true;
-    
-    platformTheme = {  
-      name = "kde";
-    };
 
+    platformTheme.name = "gtk";
+  
     style = {
-      name = "adwaita-dark";
+      name = "Adwaita-Dark";
     };
 
   };

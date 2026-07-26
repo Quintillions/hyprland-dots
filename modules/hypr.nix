@@ -28,10 +28,20 @@
     satty
     cliphist
     ddcutil
+    adwaita-qt
+    adwaita-qt6
 
 
     
     kdePackages.dolphin
+    kdePackages.kio
+    kdePackages.kio-fuse
+    kdePackages.kio-extras
+    kdePackages.qtsvg
+    kdePackages.qqc2-desktop-style
+    kdePackages.breeze-icons
+    kdePackages.gwenview
+    kdePackages.okular
     linux-wallpaperengine
     wl-clipboard
   ];
@@ -42,4 +52,5 @@
     XDG_SESSION_DESKTOP = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
   };
+
 }
