@@ -4,7 +4,7 @@ hl.bind(mod .. " + Q",         hl.dsp.window.close())
 hl.bind(mod .. " + SHIFT + Q",    hl.dsp.window.kill())
 hl.bind(mod .. " + Return",    hl.dsp.exec_cmd("alacritty"))
 hl.bind(mod .. " + F",         hl.dsp.window.fullscreen())
-hl.bind(mod .. " + E",         hl.dsp.exec_cmd("dolphin"))
+hl.bind(mod .. " + E",         hl.dsp.exec_cmd("nemo"))
 hl.bind(mod .. " + T",         hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mod .. " + M",         hl.dsp.window.move({ workspace = "special:minimized", follow = false }))
 

@@ -42,8 +42,8 @@ hl.window_rule({
 })
 
 hl.window_rule({
-    name   = "float-dolphin",
-    match  = { class = "org.kde.dolphin" },
+    name   = "float-nemo",
+    match  = { class = "nemo" },
     float  = true,
     size   = { 1500, 850 },
     center = true,

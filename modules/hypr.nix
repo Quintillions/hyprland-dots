@@ -31,20 +31,9 @@
     adwaita-qt
     adwaita-qt6
 
-
-    
-    kdePackages.dolphin
-    kdePackages.kservice
-    kdePackages.kded
-    kdePackages.kde-cli-tools
-    kdePackages.kio
-    kdePackages.kio-fuse
-    kdePackages.kio-extras
-    kdePackages.qtsvg
-    kdePackages.qqc2-desktop-style
-    kdePackages.breeze-icons
-    kdePackages.gwenview
-    kdePackages.okular
+    nemo
+    nomacs
+    zathura
     linux-wallpaperengine
     wl-clipboard
   ];
