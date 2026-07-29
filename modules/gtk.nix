@@ -2,21 +2,16 @@
 
 {
   home.pointerCursor = {
-      gtk.enable = true;
-      # x11.enable = true;
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Classic";
-      size = 16;
-    };
+    gtk.enable = true;
+    # x11.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 16;
+  };
 
   qt = {
     enable = true;
-
-    platformTheme.name = "gtk";
-  
-    style = {
-      name = "adwaita-dark";
-    };
+    platformTheme.name = "qtct";
 
   };
 
@@ -24,8 +19,8 @@
     enable = true;
 
     theme = {
-      package = pkgs.flat-remix-gtk;
-      name = "Flat-Remix-GTK-Grey-Darkest";
+      package = pkgs.everforest-gtk-theme;
+      name = "Everforest-Dark-BL";
     };
 
     iconTheme = {
@@ -38,5 +33,12 @@
       size = 12;
     };
   };
+
+  home.packages = with pkgs; [
+    libsForQt5.qt5ct
+    kdePackages.qt6ct
+
+  ];
+  
 
 }
