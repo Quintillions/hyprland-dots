@@ -35,7 +35,8 @@
     { "type": "terminal", "key": "  term", "format": "{pretty-name}" },
     { "type": "custom", "key": " 󰂜 bar", "format": "pill (quickshell)" },
     { "type": "custom", "key": " 󰄀 shot", "format": "grim + slurp + satty" },
-    { "type": "custom", "key": "  font", "format": "JetBrains Mono Nerd" },
+    { "type": "font", "key": "  font", "format": "{2}" },
+    { "type": "battery", "key": "  bat", "format": "{capacity} ({status})" },
     "break",
     { "type": "colors", "symbol": "block", "block": { "width": 3, "range": [2, 7] }, "paddingLeft": 2 },
     "break"
