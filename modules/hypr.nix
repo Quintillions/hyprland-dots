@@ -28,6 +28,7 @@
     satty
     cliphist
     ddcutil
+    everforest-gtk-theme
     adwaita-qt
     adwaita-qt6
 
