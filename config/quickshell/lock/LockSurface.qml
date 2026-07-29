@@ -12,8 +12,8 @@ Item {
     readonly property bool isMain: {
         var scr = Quickshell.screens;
         for (var i = 0; i < scr.length; i++)
-            if (scr[i] && scr[i].name === "eDP-1")
-                return surface.screenName === "eDP-1";
+            if (scr[i] && scr[i].name === "DP-1")
+                return surface.screenName === "DP-1";
         return true;
     }
 

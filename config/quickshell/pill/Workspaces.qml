@@ -7,7 +7,7 @@ import "Singletons"
 
 /**
  * Workspace dots for one monitor. A fixed per-monitor range always shows every
- * dot — eDP-1 gets [1,2,3,4,5], HDMI-A-1 gets [6,7,8,9,10] — no numbers, no
+ * dot — DP-1 gets [1,2,3,4,5], HDMI-A-1 gets [6,7,8,9,10] — no numbers, no
  * icons. The active one is a larger filled vermillion dot; the rest are small
  * and dim, brightening on hover. Clicking a dot focuses that workspace via the
  * native Hyprland-lua dispatcher. The active marker tracks the monitor's live

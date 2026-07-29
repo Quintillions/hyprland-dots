@@ -13,7 +13,7 @@ Item {
     property real s: 1
 
     readonly property var range: {
-        if (screenName === "eDP-1") return [1, 2, 3, 4, 5];
+        if (screenName === "DP-1") return [1, 2, 3, 4, 5];
         if (screenName === "HDMI-A-1") return [6, 7, 8, 9, 10];
         return [];
     }
