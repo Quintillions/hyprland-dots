@@ -37,6 +37,8 @@
     zathura
     linux-wallpaperengine
     wl-clipboard
+    gvfs
+    haskellPackages.gio
   ];
   services.hypridle.enable = true;
   

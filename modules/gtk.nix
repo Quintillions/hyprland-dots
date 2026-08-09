@@ -27,7 +27,7 @@
       package = pkgs.adwaita-icon-theme;
       name = "Adwaita";
     };
-
+    
     font = {
       name = "JetBrainsMono Nerd Font";
       size = 12;

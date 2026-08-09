@@ -25,7 +25,7 @@ hl.window_rule({
 
 hl.window_rule({
     name  = "float-file-pickers",
-    match = { title = "(Open File|Save File|Save As|Choose Files|Open Folder)" },
+    match = { title = "(Open File|Save File|Save As|Choose Files|Open Folder|Select what to share)" },
     float = true,
 })
 
@@ -37,7 +37,7 @@ hl.window_rule({
 hl.window_rule({
     name  = "float-spotify",
     match = { class = "[Ss]potify" },
-    float = true,
+    float = false,
     workspace = "5 silent",
 })
 
@@ -77,4 +77,14 @@ hl.window_rule({
         class = "^(steam)$",
         title = "negative:^(Steam)$",
     },
+})
+
+hl.window_rule({
+    name = "Discord",
+    match = {
+        title = "(Discord|Select what to share)",
+    },
+
+    workspace = "2 silent",
+    opacity = "1 1",
 })
