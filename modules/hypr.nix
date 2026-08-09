@@ -31,6 +31,7 @@
     everforest-gtk-theme
     adwaita-qt
     adwaita-qt6
+    libnotify
 
     nemo
     nomacs

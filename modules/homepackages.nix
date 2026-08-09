@@ -15,10 +15,9 @@
     vscode
     vlc
 
-    # Coding
-    # jetbrains.pycharm-community
-    # vscode
-    # netbeans
+    # Communication
+    teams-for-linux
+    zoom-us
 
 
   ];

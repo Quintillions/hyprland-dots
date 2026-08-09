@@ -6,7 +6,7 @@
         ./modules/terminal.nix
         ./modules/gtk.nix
         ./modules/wallust.nix
-        ./modules/mime.nix
+        # ./modules/mime.nix
     ];
     
     home.file.".config/hypr".source = ./config/hypr;
