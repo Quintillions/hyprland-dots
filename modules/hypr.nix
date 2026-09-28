@@ -8,7 +8,18 @@
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
-  xdg.portal.enable = true;
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
+    config = {
+      common = {
+        default = [ "hyprland" "gtk" ];
+        "org.freedesktop.impl.portal.Settings" = [ "gtk" ];
+        "org.freedesktop.impl.portal.ScreenCast" = [ "hyprland" ];
+      };
+    };
+  };
 
   environment.systemPackages = with pkgs; [
     inputs.quickshell.packages.${pkgs.system}.default
@@ -40,8 +51,13 @@
     wl-clipboard
     gvfs
     haskellPackages.gio
+    spotdl
   ];
   services.hypridle.enable = true;
+  services.udev.extraRules = ''
+  KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
+'';
+
   
   environment.sessionVariables = {
     XDG_CURRENT_DESKTOP = "Hyprland";

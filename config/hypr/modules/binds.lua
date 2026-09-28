@@ -23,6 +23,11 @@ hl.bind(mod .. " + mouse_up",      hl.dsp.focus({ workspace = "r-1" }))
 hl.bind(mod .. " + mouse_down",    hl.dsp.focus({ workspace = "r+1" }))
 
 
+-- OBS Replay Buffer
+
+hl.bind(mod .. " + SHIFT + apostrophe ", hl.dsp.pass({ window = "class:com.obsproject.Studio" }))
+
+
 for i = 1, 5 do
     hl.bind(mod .. " + " .. i, hl.dsp.focus({ workspace = i}))
     hl.bind(mod .. " + SHIFT + " .. i, hl.dsp.window.move({workspace = i})) 

@@ -11,15 +11,9 @@
     ./modules/syspackages.nix
     ./modules/users.nix
     ./modules/spotify.nix
-    # ./modules/openrgb.nix
     # ./modules/sddm.nix
 
   ];
-
-
-  # XWayland support
-  # fuck openrgb
-
   programs.steam = {
     enable = true;
     extraCompatPackages = with pkgs; [
@@ -72,6 +66,16 @@
 
   };
 
+
+programs.obs-studio = {
+  enable = true;
+  enableVirtualCamera = true;
+  plugins = with pkgs.obs-studio-plugins; [
+    wlrobs
+    obs-backgroundremoval
+    obs-pipewire-audio-capture
+  ];
+};
 programs.appimage.enable = true;
 programs.appimage.binfmt = true;
 programs.appimage.package = pkgs.appimage-run.override 
@@ -82,8 +86,13 @@ programs.appimage.package = pkgs.appimage-run.override
     pkgs.libxcrypt-legacy
     pkgs.python312
     pkgs.python312Packages.torch
+    pkgs.pipewire
+    pkgs.pulseaudio
+    pkgs.libpulseaudio   # Required for PulseAudio API/client hooks
+    pkgs.alsa-lib        # Required for direct sound layer detection
   ]; 
 };
+
 
 
   xdg.mime.enable = true;

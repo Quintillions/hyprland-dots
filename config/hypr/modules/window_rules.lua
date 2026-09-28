@@ -19,13 +19,20 @@ hl.window_rule({
 
 hl.window_rule({
     name  = "float-system-dialogs",
-    match = { class = "(pavucontrol|nm-connection-editor|blueman-manager|org.kde.polkit-kde-authentication-agent-1|xdg-desktop-portal-gtk)" },
+    match = { class = "(org.pulseaudio.pavucontrol|nm-connection-editor|blueman-manager|org.kde.polkit-kde-authentication-agent-1|xdg-desktop-portal-gtk|satty|Volume Control)" },
     float = true,
 })
 
 hl.window_rule({
+    name  = "Satty",
+    match = { class = "com.gabm.satty" },
+    float = true,
+    size = {"(monitor_w*0.5)", "(monitor_h*0.5)"},
+    center = true,
+})
+hl.window_rule({
     name  = "float-file-pickers",
-    match = { title = "(Open File|Save File|Save As|Choose Files|Open Folder|Select what to share)" },
+    match = { title = "(Open File|Save File|Save As|Choose Files|Open Folder|Select what to share|Picture-in-Picture)" },
     float = true,
 })
 
@@ -82,7 +89,7 @@ hl.window_rule({
 hl.window_rule({
     name = "Discord",
     match = {
-        title = "(Discord|Select what to share)",
+        title = "(Discord)",
     },
 
     workspace = "2 silent",

@@ -8,7 +8,6 @@
         vim
         wget
         git
-        light
         brightnessctl
         iproute2
         parted
@@ -39,6 +38,7 @@
         cloudflare-warp
         flatpak
         vesktop
+        jdk21_headless
       ];
     };
 }
