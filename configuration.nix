@@ -28,6 +28,11 @@
 	hardware.graphics = {
   		enable = true;
       enable32Bit = true;
+      extraPackages = with pkgs; [
+        mesa
+        libva
+        libva-utils
+      ];
 	};
 
   programs.nix-ld.enable = true;
@@ -72,6 +77,7 @@ programs.obs-studio = {
   enableVirtualCamera = true;
   plugins = with pkgs.obs-studio-plugins; [
     wlrobs
+    obs-vaapi
     obs-backgroundremoval
     obs-pipewire-audio-capture
   ];

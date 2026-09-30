@@ -16,5 +16,11 @@
 
   programs.rmpc = {
     enable = true;
+    config = ''
+      (
+        method: Block
+      )
+
+    '';
   };
 }
