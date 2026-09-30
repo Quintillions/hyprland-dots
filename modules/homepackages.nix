@@ -20,7 +20,6 @@
     prismlauncher
     chromium
     mpd
-    rmpc
 
   ];
 
