@@ -6,6 +6,7 @@
         ./modules/terminal.nix
         ./modules/gtk.nix
         ./modules/wallust.nix
+        ./modules/mpd.nix
         # ./modules/mime.nix
     ];
     

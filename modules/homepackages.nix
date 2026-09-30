@@ -19,6 +19,8 @@
     zoom-us
     prismlauncher
     chromium
+    mpd
+    rmpc
 
   ];
 
