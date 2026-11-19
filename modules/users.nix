@@ -3,7 +3,7 @@
   users = {
     users.quin = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "audio" "networkmanager" "input" "video" "power" ];
+      extraGroups = [ "wheel" "audio" "networkmanager" "input" "video" "power" "gamemode" ];
       packages = with pkgs; [ tree ];
     };
   };

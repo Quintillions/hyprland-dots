@@ -21,6 +21,7 @@ hl.bind(mod .. " + SHIFT + Up",    hl.dsp.window.move({ direction = "u" }))
 hl.bind(mod .. " + SHIFT + Down",  hl.dsp.window.move({ direction = "d" }))
 hl.bind(mod .. " + mouse_up",      hl.dsp.focus({ workspace = "r-1" }))
 hl.bind(mod .. " + mouse_down",    hl.dsp.focus({ workspace = "r+1" }))
+hl.bind(mod .. " + End",    hl.dsp.focus({ workspace = "6" }))
 
 
 -- OBS Replay Buffer

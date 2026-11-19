@@ -1,6 +1,8 @@
 {config, pkgs, ...}:
 {
   boot = {
+    kernelModules = [ "uinput" ];
+    
     initrd.kernelModules = [ "amdgpu" ];
     
     loader = {

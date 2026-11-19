@@ -20,11 +20,18 @@
       proton-ge-bin
     ];
   };
+
+  programs.gamemode.enable = true;
+  
   hardware.opentabletdriver = {
     enable = true;
-    daemon.enable =true;
+    daemon.enable = true;
   
   };
+
+  hardware.uinput.enable = true;
+
+  
 	hardware.graphics = {
   		enable = true;
       enable32Bit = true;
@@ -42,6 +49,18 @@
   ];
   
   services = {
+    # openssh = {
+    #   enable = true;
+    #   settings = {
+    #     PermitRootLogin = "no"; # "yes" or "prohibit-password" if needed
+    #     PasswordAuthentication = true; # Enforce key-based auth
+    #     KbdInteractiveAuthentication = true;
+    #     AllowUsers = [ "quin" ];
+    #  };
+    # };
+
+    gvfs.enable = true; # nemo mtp for android devices
+    usbmuxd.enable = true; # nemo ftp for ios devices
     udisks2.enable = true;
 	  dbus.enable = true;
     power-profiles-daemon.enable = lib.mkDefault true;

@@ -3,7 +3,10 @@
    home.packages = with pkgs; [
     # cli
     fastfetch
+    streamrip
+    spotdl
     yt-dlp
+    deno
     ffmpeg-full
     zip
     xz

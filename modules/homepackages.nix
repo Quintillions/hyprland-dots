@@ -8,11 +8,13 @@
     python3
     lua
     lazygit
+    feh
     
 
     calibre
     vscode
     vlc
+    deadlock-mod-manager
 
     # Communication
     teams-for-linux

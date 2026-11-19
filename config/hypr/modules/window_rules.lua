@@ -24,6 +24,12 @@ hl.window_rule({
 })
 
 hl.window_rule({
+    name  = "scratch-obs",
+    match = { class = "(com.obsproject.Studio)" },
+    workspace = "6 silent",
+})
+
+hl.window_rule({
     name  = "Satty",
     match = { class = "com.gabm.satty" },
     float = true,
@@ -37,7 +43,7 @@ hl.window_rule({
 })
 
 hl.window_rule({
-    name  = "float-ghosttype",
+    name  = "float-terminal",
     match = { class = "[Aa]lacritty"},
 })
 

@@ -20,7 +20,7 @@
     programs.bash = {
         enable = true;
         shellAliases = {
-            wtf = "echo 'what the fish' ";
+            wtf = "hyprctl --instance 0 eval 'hl.clear_crashed_lockscreen()'";
         };
     };
     home.packages = [

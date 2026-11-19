@@ -12,10 +12,11 @@
         iproute2
         parted
         gcc
-        power-profiles-daemon
         hwdata
         seatd
         rocmPackages.rocm-smi
+        libimobiledevice
+        ifuse
 
         # ─────────────────────────────
         # 🧩 Wayland / X / Rendering Libraries
@@ -29,6 +30,8 @@
         glibc
       
         pavucontrol
+        gsmartcontrol
+        smartmontools
       
         
 

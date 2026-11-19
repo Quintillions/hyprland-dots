@@ -5,6 +5,7 @@
     musicDirectory = "/home/quin/Music";
     playlistDirectory = "/home/quin/Playlist";
     extraConfig = ''
+      auto_update "yes"
       audio_output {
         type "pipewire"
         name "PipeWire Sound Server"

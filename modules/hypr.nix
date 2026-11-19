@@ -49,9 +49,7 @@
     zathura
     linux-wallpaperengine
     wl-clipboard
-    gvfs
     haskellPackages.gio
-    spotdl
   ];
   services.hypridle.enable = true;
   services.udev.extraRules = ''
