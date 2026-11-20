@@ -1,0 +1,83 @@
+// WALPURGISNACHT: HEXENWALD — Waybar (Horologium)
+{
+  "layer": "top",
+  "position": "top",
+  "height": 34,
+  "margin-top": 6,
+  "margin-left": 12,
+  "margin-right": 12,
+  "spacing": 10,
+
+  "modules-left": ["hyprland/workspaces", "custom/minimized"],
+  "modules-center": ["custom/dies", "clock"],
+  "modules-right": ["custom/dnd", "cpu", "memory", "pulseaudio", "network", "battery", "tray", "custom/power"],
+
+  // Elder Futhark labels are purely visual; workspace IDs stay 1-5.
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": { "1": "ᚠ", "2": "ᚢ", "3": "ᚦ", "4": "ᚨ", "5": "ᛉ" },
+    "persistent-workspaces": { "*": 5 },
+    "show-special": false
+  },
+
+  "custom/minimized": {
+    "exec": "$HOME/.config/hexenwald/bin/minimized",
+    "return-type": "json",
+    "interval": 3,
+    "on-click": "$HOME/.config/hexenwald/bin/minimized restore"
+  },
+
+  "custom/dies": {
+    "exec": "$HOME/.config/hexenwald/bin/latin-date waybar",
+    "return-type": "json",
+    "interval": 30
+  },
+
+  "clock": {
+    "format": "{:%H:%M}",
+    "tooltip-format": "{:%A, %d %B %Y}"
+  },
+
+  "custom/dnd": {
+    "exec": "$HOME/.config/hexenwald/bin/dnd-status",
+    "return-type": "json",
+    "interval": 2,
+    "on-click": "makoctl mode -t do-not-disturb"
+  },
+
+  "cpu": { "format": "PROC {usage}%", "interval": 5 },
+
+  "memory": {
+    "format": "MEM {percentage}%",
+    "interval": 5,
+    "tooltip-format": "{used:0.1f} / {total:0.1f} GiB"
+  },
+
+  "pulseaudio": {
+    "format": "SONUS {volume}%",
+    "format-muted": "SONUS —",
+    "scroll-step": 5,
+    "on-click": "pavucontrol"
+  },
+
+  "network": {
+    "format-wifi": "RETE {essid}",
+    "format-ethernet": "RETE LAN",
+    "format-disconnected": "RETE —",
+    "tooltip-format": "{ifname}: {ipaddr}",
+    "on-click": "nm-connection-editor"
+  },
+
+  "battery": {
+    "format": "PILA {capacity}%",
+    "states": { "warning": 30, "critical": 15 }
+  },
+
+  "tray": { "icon-size": 16, "spacing": 8 },
+
+  "custom/power": {
+    "format": "FINIS",
+    "tooltip": false,
+    "on-click": "$HOME/.config/rofi/scripts/power.sh"
+  }
+}

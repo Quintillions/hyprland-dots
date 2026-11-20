@@ -1,0 +1,13 @@
+configuration {
+    modi:             "drun,run,window";
+    show-icons:       false;
+    display-drun:     "Aperire";
+    display-run:      "Currere";
+    display-window:   "Fenestrae";
+    drun-display-format: "{name}";
+    matching:         "fuzzy";
+    sort:             true;
+    sorting-method:   "fzf";
+    kb-cancel:        "Escape,Control+g";
+}
+@theme "hexenwald"

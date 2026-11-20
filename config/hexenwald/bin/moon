@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Approximate moon phase from the mean synodic month (accurate to roughly +/- 0.5 day).
+# Output: {"idx":0-7,"name":"LUNA ...","pct":illumination-percent}
+set -u
+names=("LUNA NOVA" "LUNA CRESCENS" "PRIMA QUARTA" "LUNA GIBBA CRESCENS" "LUNA PLENA" "LUNA GIBBA DECRESCENS" "ULTIMA QUARTA" "LUNA DECRESCENS")
+now=${HEXEN_NOW:-$(date +%s)}
+read -r idx pct < <(awk -v now="$now" 'BEGIN {
+    ref = 947182440            # 2000-01-06 18:14 UTC, a mean new moon
+    syn = 29.530588853
+    age = ((now - ref) / 86400) % syn
+    if (age < 0) age += syn
+    idx = int(age / syn * 8 + 0.5) % 8
+    pi = atan2(0, -1)
+    pct = int((1 - cos(2 * pi * age / syn)) / 2 * 100 + 0.5)
+    print idx, pct
+}')
+jq -nc --argjson idx "$idx" --arg name "${names[idx]}" --argjson pct "$pct" '{idx:$idx, name:$name, pct:$pct}'

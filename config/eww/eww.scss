@@ -1,0 +1,62 @@
+// WALPURGISNACHT: HEXENWALD palette (single source for the Eww side)
+$tiefwald:  #111713;
+$moos:      #26372B;
+$tanne:     #354A38;
+$efeu:      #52664A;
+$bronze:    #927B4F;
+$pergament: #C4B99B;
+$nebel:     #858B7C;
+$kohle:     #202521;
+$mondlicht: #D5D4C3;
+
+* { all: unset; font-family: "IM Fell English", "Noto Serif", serif; }
+
+.frame {
+  background-color: $kohle;
+  border: 1px solid $bronze;
+  box-shadow: inset 0 0 0 4px $kohle, inset 0 0 0 5px rgba($bronze, 0.45);
+  color: $pergament;
+}
+.corner { opacity: 0.95; }
+.tabula-body, .memento-body { padding: 28px 30px; }
+
+.horologium { font-size: 34px; color: $mondlicht; margin-top: 4px; }
+.dies       { font-size: 15px; letter-spacing: 3px; color: $pergament; }
+.datum      { font-size: 13px; letter-spacing: 2px; color: $nebel; }
+.luna       { font-size: 12px; letter-spacing: 2px; color: $nebel; margin-bottom: 4px; }
+
+.heading { font-size: 15px; letter-spacing: 3px; color: $pergament; margin-top: 4px; }
+.sub     { font-size: 11px; letter-spacing: 2px; color: $nebel; }
+.track   { font-size: 16px; color: $mondlicht; margin-top: 6px; }
+.artist  { font-size: 13px; color: $nebel; }
+.rule    { margin: 6px 0; }
+
+.bar { min-height: 3px; margin: 6px 4px;
+  trough { background-color: $moos; min-height: 3px; border-radius: 2px; }
+  progress { background-color: $efeu; min-height: 3px; border-radius: 2px; } }
+
+.tbtn { padding: 4px 12px; font-size: 12px; letter-spacing: 2px; color: $pergament;
+  background-color: transparent; border: 1px solid rgba($bronze, 0.6); border-radius: 2px;
+  &:hover { background-color: $moos; border-color: $bronze; color: $mondlicht; }
+  &.main { background-color: $efeu; border-color: $bronze; color: $mondlicht; font-weight: bold;
+    &:hover { background-color: $tanne; } } }
+
+.reading { padding: 2px 4px; border-bottom: 1px solid rgba($bronze, 0.18); }
+.reading-name  { font-size: 12px; letter-spacing: 2px; color: $nebel; }
+.reading-value { font-size: 13px; color: $pergament; }
+
+.session   { font-size: 13px; letter-spacing: 3px; color: $nebel; }
+.countdown { font-size: 54px; color: $mondlicht; }
+
+.tasklist { min-height: 150px; }
+.task { padding: 3px 4px; }
+.task-text label { font-size: 14px; color: $pergament; }
+.task.done .task-text label { color: $nebel; text-decoration: line-through; }
+.check { min-width: 14px; min-height: 14px; border: 1px solid $bronze; border-radius: 2px;
+  &:hover { background-color: $moos; } &.on { background-color: $efeu; } }
+.remove { font-size: 16px; color: $nebel; padding: 0 4px; &:hover { color: $mondlicht; } }
+
+scale { min-height: 18px; margin: 2px 4px; }
+scale trough { background-color: $moos; min-height: 3px; border-radius: 2px; }
+scale highlight { background-color: $efeu; min-height: 3px; border-radius: 2px; }
+scale slider { background-color: $bronze; min-width: 11px; min-height: 11px; border-radius: 6px; margin: -4px; }

@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# External-monitor brightness over DDC/CI (ddcutil). Usage: brightness get | set <5-100>
+# Needs I2C access for your user; on failure `get` reports ok=false and the widget hides its slider.
+set -u
+STATE=${XDG_STATE_HOME:-$HOME/.local/state}/hexenwald
+BUSFILE=$STATE/ddc-bus; TARGET=$STATE/brightness-target; LOCK=$STATE/brightness.lock
+mkdir -p "$STATE"
+
+bus() {
+    if [ ! -s "$BUSFILE" ]; then
+        ddcutil detect --brief 2>/dev/null |
+            sed -n 's|.*I2C bus:[[:space:]]*/dev/i2c-\([0-9]*\).*|\1|p' | head -1 >"$BUSFILE"
+    fi
+    cat "$BUSFILE" 2>/dev/null
+}
+
+case "${1:-get}" in
+    get)
+        b=$(bus); v=""
+        [ -n "$b" ] && v=$(timeout 3 ddcutil getvcp 10 --bus "$b" --brief 2>/dev/null | sed -n 's/.*C \([0-9][0-9]*\) .*/\1/p')
+        if [ -n "$v" ]; then jq -nc --argjson p "$v" '{ok:true,pct:$p}'; else echo '{"ok":false,"pct":0}'; fi ;;
+    set)
+        v=${2:-}; v=${v%%.*}
+        case "$v" in ''|*[!0-9]*) exit 2 ;; esac
+        (( v < 5 )) && v=5; (( v > 100 )) && v=100
+        echo "$v" >"$TARGET"
+        # One debounced worker applies the latest value; extra calls just update TARGET.
+        (
+            flock -n 9 || exit 0
+            b=$(bus); [ -n "$b" ] || exit 0
+            while :; do
+                cur=$(<"$TARGET"); sleep 0.3
+                [ "$(<"$TARGET")" = "$cur" ] || continue
+                timeout 3 ddcutil setvcp 10 "$cur" --bus "$b" --noverify
+                [ "$(<"$TARGET")" = "$cur" ] && break
+            done
+        ) 9>"$LOCK" >/dev/null 2>&1 & ;;
+    *) echo "usage: brightness get|set <5-100>" >&2; exit 2 ;;
+esac

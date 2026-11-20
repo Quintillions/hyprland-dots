@@ -9,23 +9,23 @@
       palette = "softdark";
       fallback_generator = "complementary";
 
-        templates = {
+      # Accents only: the Hexenwald palette itself is fixed in the theme files.
+      templates = {
 
-        "hypr-colors.lua" = {
-          target = "~/.cache/wallust/hypr-colors.lua";
-          template = "hypr-colors.lua";
+        "waybar-accent.css" = {
+          target = "~/.config/waybar/accent.css";
+          template = "waybar-accent.css";
         };
 
-        "alacritty-colors.toml" = {
-          target = "~/.cache/wallust/alacritty-colors.toml";
-          template = "alacritty-colors.toml";
+        "alacritty-accent.toml" = {
+          target = "~/.cache/wallust/alacritty-accent.toml";
+          template = "alacritty-accent.toml";
         };
 
         "fastfetch.jsonc" = {
           target = "~/.config/fastfetch/config.jsonc";
           template = "fastfetch.jsonc";
         };
-
 
       };
     };

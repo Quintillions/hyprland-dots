@@ -1,0 +1,33 @@
+# WALPURGISNACHT: HEXENWALD — fixed terminal palette.
+# Cursor colour is overridden afterwards by ~/.cache/wallust/alacritty-accent.toml (accent only).
+[colors.primary]
+background = "#111713"
+foreground = "#C4B99B"
+
+[colors.cursor]
+text = "#111713"
+cursor = "#927B4F"
+
+[colors.selection]
+text = "#D5D4C3"
+background = "#354A38"
+
+[colors.normal]
+black   = "#202521"
+red     = "#C4705A"
+green   = "#8AA37C"
+yellow  = "#B39A66"
+blue    = "#7C9AA0"
+magenta = "#9C8499"
+cyan    = "#80A89E"
+white   = "#C4B99B"
+
+[colors.bright]
+black   = "#858B7C"
+red     = "#D58468"
+green   = "#A0BA90"
+yellow  = "#C9AE74"
+blue    = "#93B2B8"
+magenta = "#B499B0"
+cyan    = "#99C2B8"
+white   = "#D5D4C3"

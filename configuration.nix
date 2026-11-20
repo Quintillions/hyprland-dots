@@ -11,6 +11,7 @@
     ./modules/syspackages.nix
     ./modules/users.nix
     ./modules/spotify.nix
+    ./modules/hexenwald.nix
     # ./modules/sddm.nix
 
   ];
@@ -73,12 +74,11 @@
       pulse.enable = true;
     };
 
+    # Login prompt at boot (no autologin).
     displayManager.ly = {
       enable = true;
       settings = {
         animation = "gameoflife";
-        auto_login_session = "hyprland";
-
       };
 
     };
@@ -132,11 +132,3 @@ programs.appimage.package = pkgs.appimage-run.override
 
   system.stateVersion = "25.05";
 }
-
-
-
-
-
-
-
-

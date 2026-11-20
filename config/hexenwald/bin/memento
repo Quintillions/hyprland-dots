@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+# Memento Mori pomodoro. State survives restarts (end timestamp stored on disk).
+# Usage: memento status|toggle|reset|skip|expire
+set -u
+STATE_DIR=${HEXEN_STATE_DIR:-${XDG_STATE_HOME:-$HOME/.local/state}/hexenwald}
+FILE=$STATE_DIR/memento.json
+LABOR=$(( ${HEXEN_LABOR_MIN:-25} * 60 ))
+REST=$(( ${HEXEN_REST_MIN:-5} * 60 ))
+SELF=$(readlink -f "$0")
+mkdir -p "$STATE_DIR"
+
+now() { date +%s; }
+dur() { [ "$1" = labor ] && echo "$LABOR" || echo "$REST"; }
+init() { [ -s "$FILE" ] || jq -nc --argjson r "$LABOR" '{mode:"labor",state:"idle",remaining:$r,deadline:0,sessions:0}' >"$FILE"; }
+get() { jq -r "$1" "$FILE"; }
+save() { local t; t=$(mktemp "$FILE.XXXXXX") && cat >"$t" && mv "$t" "$FILE"; }
+roman() {
+    local n=$1 out="" i; local -a v=(10 9 5 4 1) s=(X IX V IV I)
+    for i in "${!v[@]}"; do while (( n >= v[i] )); do out+=${s[i]}; (( n -= v[i] )); done; done
+    printf '%s' "${out:-I}"
+}
+
+expire() {
+    init
+    [ "$(get .state)" = running ] || return 0
+    (( $(now) >= $(get .deadline) - 1 )) || return 0
+    local mode next sessions body
+    mode=$(get .mode); sessions=$(get .sessions)
+    if [ "$mode" = labor ]; then next=rest; sessions=$(( sessions + 1 )); else next=labor; fi
+    jq -c --arg m "$next" --argjson r "$(dur "$next")" --argjson s "$sessions" \
+        '.mode=$m | .state="idle" | .remaining=$r | .deadline=0 | .sessions=$s' "$FILE" | save
+    if [ "$mode" = labor ]; then body="Work session $(roman "$sessions") complete. Time to rest."
+    else body="Rest is over. Back to work."; fi
+    command -v notify-send >/dev/null 2>&1 && notify-send -a "Memento Mori" -u normal "TEMPUS EXPLETUM" "$body"
+    return 0
+}
+
+status() {
+    init
+    [ "$(get .state)" = running ] && (( $(now) >= $(get .deadline) )) && expire
+    local mode state rem total sessions label verb
+    mode=$(get .mode); state=$(get .state); sessions=$(get .sessions); total=$(dur "$mode")
+    if [ "$state" = running ]; then rem=$(( $(get .deadline) - $(now) )); (( rem < 0 )) && rem=0
+    else rem=$(get .remaining); fi
+    case "$state" in
+        running) [ "$mode" = labor ] && verb=LABOR || verb=OTIUM ;;
+        paused)  verb=PAUSA ;;
+        *)       verb=QUIES ;;
+    esac
+    label="SESSIO $(roman $(( sessions + 1 ))) · $verb"
+    jq -nc --arg mode "$mode" --arg state "$state" --arg label "$label" \
+        --arg mmss "$(printf '%02d:%02d' $(( rem / 60 )) $(( rem % 60 )))" \
+        --argjson rem "$rem" --argjson total "$total" \
+        '{mode:$mode,state:$state,label:$label,mmss:$mmss,remaining:$rem,pct:(if $total>0 then ($rem*100/$total|floor) else 0 end)}'
+}
+
+toggle() {
+    init
+    local state rem
+    state=$(get .state)
+    if [ "$state" = running ]; then
+        rem=$(( $(get .deadline) - $(now) )); (( rem < 1 )) && rem=1
+        jq -c --argjson r "$rem" '.state="paused" | .remaining=$r | .deadline=0' "$FILE" | save
+    else
+        rem=$(get .remaining); (( rem < 1 )) && rem=$(dur "$(get .mode)")
+        jq -c --argjson d "$(( $(now) + rem ))" '.state="running" | .deadline=$d' "$FILE" | save
+        # shellcheck disable=SC2016  # single quotes intentional: expanded by the child shell
+        # Detached waker so the notification fires even when no widget is polling.
+        ( setsid bash -c 'sleep "$1"; exec "$2" expire' _ "$(( rem + 1 ))" "$SELF" >/dev/null 2>&1 & )
+    fi
+}
+
+reset() { init; jq -c --argjson r "$(dur "$(get .mode)")" '.state="idle" | .remaining=$r | .deadline=0' "$FILE" | save; }
+skip()  { init; local m=rest; [ "$(get .mode)" = rest ] && m=labor
+          jq -c --arg m "$m" --argjson r "$(dur "$m")" '.mode=$m | .state="idle" | .remaining=$r | .deadline=0' "$FILE" | save; }
+
+case "${1:-status}" in
+    status) status ;; toggle) toggle ;; reset) reset ;; skip) skip ;; expire) expire ;;
+    *) echo "usage: memento status|toggle|reset|skip|expire" >&2; exit 2 ;;
+esac

@@ -1,0 +1,88 @@
+/* WALPURGISNACHT: HEXENWALD — Rofi */
+* {
+    tiefwald:   #111713;
+    moos:       #26372B;
+    tanne:      #354A38;
+    efeu:       #52664A;
+    bronze:     #927B4F;
+    pergament:  #C4B99B;
+    nebel:      #858B7C;
+    kohle:      #202521;
+    mondlicht:  #D5D4C3;
+
+    background-color: transparent;
+    text-color:       @pergament;
+    font:             "IM Fell English 15";
+}
+
+window {
+    location:         center;
+    width:            460px;
+    background-color: @kohle;
+    border:           2px solid;
+    border-color:     @bronze;
+    border-radius:    2px;
+    padding:          0;
+}
+
+mainbox {
+    spacing:  10px;
+    padding:  18px 20px 20px 20px;
+    children: [ header, inputbar, listview, message ];
+}
+
+header {
+    expand:           false;
+    padding:          0 0 8px 0;
+    border:           0 0 1px 0;
+    border-color:     @bronze;
+}
+textbox-banner {
+    str:              "ᚠ  ᚢ  ᚦ  ᚨ  ᛉ";
+    font:             "Noto Sans Runic 14";
+    horizontal-align: 0.5;
+    text-color:       @bronze;
+}
+header { children: [ textbox-banner ]; }
+
+inputbar {
+    spacing:          10px;
+    padding:          8px 10px;
+    background-color: @tiefwald;
+    border:           1px solid;
+    border-color:     @moos;
+    children:         [ prompt, entry ];
+}
+prompt  { text-color: @bronze; }
+entry   {
+    placeholder:       "Quaere…";
+    placeholder-color: @nebel;
+    text-color:        @mondlicht;
+}
+
+listview {
+    lines:        8;
+    columns:      1;
+    fixed-height: false;
+    scrollbar:    false;
+    spacing:      2px;
+    border:       0;
+}
+
+element {
+    padding:          7px 10px;
+    border:           0 0 0 3px;
+    border-color:     transparent;
+    background-color: transparent;
+    text-color:       @pergament;
+}
+element selected.normal, element selected.active, element selected.urgent {
+    background-color: @efeu;
+    text-color:       @mondlicht;
+    border-color:     @bronze;
+}
+element alternate.normal { background-color: transparent; }
+element-text { background-color: transparent; text-color: inherit; }
+
+message  { padding: 6px 4px 0 4px; }
+textbox  { text-color: @nebel; }

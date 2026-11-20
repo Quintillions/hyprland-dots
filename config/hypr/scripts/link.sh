@@ -1,3 +1,3 @@
 #!/bin/sh
-mon=$(hyprctl activeworkspace -j | jq -r '.monitor')
-qs -c pill ipc call pill link "$mon"
+# Bound to SUPER released: bring back the most recently dismissed notification (Mako history).
+exec makoctl restore

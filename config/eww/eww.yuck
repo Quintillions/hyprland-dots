@@ -1,0 +1,128 @@
+;; WALPURGISNACHT: HEXENWALD — Tabula Obscura (sidebar) and Memento Mori (floating widget)
+;; Data comes from scripts in ~/.config/hexenwald/bin; nothing here touches the network.
+
+(defpoll dates  :interval "20s" :initial "{\"dies\":\"DIES\",\"datum\":\"\",\"time\":\"--:--\",\"daypart\":\"luna\"}"
+  `$HOME/.config/hexenwald/bin/latin-date eww`)
+(defpoll moon   :interval "30m" :initial "{\"idx\":0,\"name\":\"LUNA\",\"pct\":0}"
+  `$HOME/.config/hexenwald/bin/moon`)
+(defpoll media  :interval "1s"  :initial "{\"active\":false,\"title\":\"Silentium\",\"artist\":\"\",\"status\":\"Stopped\",\"elapsed\":\"0:00\",\"total\":\"0:00\",\"pct\":0}"
+  `$HOME/.config/hexenwald/bin/media`)
+(defpoll stats  :interval "3s"  :initial "{\"cpu\":\"--\",\"mem\":\"--\",\"temp\":\"--\",\"bat\":\"\",\"net\":\"--\"}"
+  `$HOME/.config/hexenwald/bin/stats`)
+(defpoll brightness :interval "60s" :initial "{\"ok\":false,\"pct\":0}"
+  `$HOME/.config/hexenwald/bin/brightness get`)
+(defpoll memento :interval "1s" :initial "{\"mode\":\"labor\",\"state\":\"idle\",\"label\":\"SESSIO I · QUIES\",\"mmss\":\"25:00\",\"remaining\":1500,\"pct\":100}"
+  `$HOME/.config/hexenwald/bin/memento status`)
+(defpoll tasks  :interval "2s"  :initial "[]"
+  `$HOME/.config/hexenwald/bin/tasks list`)
+
+;; ---------- shared pieces ---------------------------------------------------
+
+(defwidget rule []
+  (image :class "rule" :path "${EWW_CONFIG_DIR}/assets/divider.svg" :image-width 240 :image-height 16))
+
+(defwidget heading [text]
+  (label :class "heading" :text "❦  ${text}  ❦"))
+
+(defwidget framed [?class]
+  (overlay :class "frame ${class}"
+    (children)
+    (image :class "corner" :halign "start" :valign "start" :path "${EWW_CONFIG_DIR}/assets/corner-tl.svg" :image-width 64 :image-height 64)
+    (image :class "corner" :halign "end"   :valign "start" :path "${EWW_CONFIG_DIR}/assets/corner-tr.svg" :image-width 64 :image-height 64)
+    (image :class "corner" :halign "start" :valign "end"   :path "${EWW_CONFIG_DIR}/assets/corner-bl.svg" :image-width 64 :image-height 64)
+    (image :class "corner" :halign "end"   :valign "end"   :path "${EWW_CONFIG_DIR}/assets/corner-br.svg" :image-width 64 :image-height 64)))
+
+(defwidget reading [name value]
+  (box :class "reading" :orientation "h" :space-evenly false
+    (label :class "reading-name" :halign "start" :hexpand true :text name)
+    (label :class "reading-value" :halign "end" :text value)))
+
+;; ---------- TABULA OBSCURA --------------------------------------------------
+
+(defwidget tabula []
+  (framed :class "tabula"
+    (box :class "tabula-body" :orientation "v" :space-evenly false :spacing 6
+      (image :class "emblem" :halign "center"
+             :path {dates.daypart == "sol" ? "${EWW_CONFIG_DIR}/assets/emblem-sol.svg" : "${EWW_CONFIG_DIR}/assets/emblem-luna-${moon.idx}.svg"}
+             :image-width 150 :image-height 150)
+      (label :class "horologium" :text "${dates.time}")
+      (label :class "dies" :text "${dates.dies}")
+      (label :class "datum" :text "${dates.datum}")
+      (label :class "luna" :text "${moon.name} · ${moon.pct}%")
+      (rule)
+      (heading :text "I · CANTICUM")
+      (label :class "sub" :text "MUSICA ET HARMONIA")
+      (label :class "track" :limit-width 28 :text "${media.title}")
+      (label :class "artist" :limit-width 32 :text "${media.artist}")
+      (progress :class "bar" :value "${media.pct}" :orientation "h")
+      (label :class "sub" :text "${media.elapsed} / ${media.total}")
+      (box :class "transport" :orientation "h" :halign "center" :space-evenly false :spacing 14
+        (button :class "tbtn" :onclick "playerctl previous" "‹ PRIOR")
+        (button :class "tbtn main" :onclick "playerctl play-pause" "${media.status == 'Playing' ? 'PAUSA' : 'LUDE'}")
+        (button :class "tbtn" :onclick "playerctl next" "PROXIMUS ›"))
+      (rule)
+      (heading :text "II · MACHINA")
+      (label :class "sub" :text "STATUS MACHINAE")
+      (box :class "readings" :orientation "v" :space-evenly false
+        (reading :name "PROCESSOR" :value "${stats.cpu}")
+        (reading :name "MEMORIA"   :value "${stats.mem}")
+        (reading :name "CALOR"     :value "${stats.temp}")
+        (reading :name "RETE"      :value "${stats.net}")
+        (box :orientation "v" :space-evenly false :visible "${brightness.ok}"
+          (reading :name "LUMEN" :value "${brightness.pct}%")
+          (scale :class "bar" :min 5 :max 100 :value "${brightness.pct}" :orientation "h"
+                 :onchange "$HOME/.config/hexenwald/bin/brightness set {}"))
+        (box :visible "${stats.bat != ''}"
+          (reading :name "PILA" :value "${stats.bat}"))))))
+
+(defwindow tabula
+  :monitor 0
+  :stacking "overlay"
+  :focusable "none"
+  :namespace "hexenwald-tabula"
+  :geometry (geometry :x "12px" :y "52px" :width "340px" :height "92%" :anchor "top right")
+  (tabula))
+
+;; ---------- MEMENTO MORI ----------------------------------------------------
+
+(defwidget task-row [id text done]
+  (box :class "task ${done ? 'done' : ''}" :orientation "h" :space-evenly false :spacing 8
+    (button :class "check ${done ? 'on' : ''}" :onclick "$HOME/.config/hexenwald/bin/tasks toggle ${id}" "")
+    (button :class "task-text" :hexpand true :halign "start"
+            :onclick "$HOME/.config/hexenwald/bin/tasks prompt-edit ${id}"
+      (label :limit-width 30 :xalign 0 :text text))
+    (button :class "remove" :onclick "$HOME/.config/hexenwald/bin/tasks remove ${id}" "×")))
+
+(defwidget memento []
+  (framed :class "memento"
+    (box :class "memento-body" :orientation "v" :space-evenly false :spacing 8
+      (image :class "hourglass" :halign "center" :path "${EWW_CONFIG_DIR}/assets/hourglass.svg" :image-width 150 :image-height 136)
+      (heading :text "MEMENTO MORI")
+      (label :class "sub" :text "TEMPUS FUGIT")
+      (rule)
+      (label :class "session" :text "${memento.label}")
+      (label :class "countdown" :text "${memento.mmss}")
+      (progress :class "bar" :value "${memento.pct}" :orientation "h")
+      (box :class "transport" :orientation "h" :halign "center" :space-evenly false :spacing 12
+        (button :class "tbtn main" :onclick "$HOME/.config/hexenwald/bin/memento toggle"
+          "${memento.state == 'running' ? 'PAUSA' : 'INCIPE'}")
+        (button :class "tbtn" :onclick "$HOME/.config/hexenwald/bin/memento reset" "RESTITUE")
+        (button :class "tbtn" :onclick "$HOME/.config/hexenwald/bin/memento skip" "TRANSI"))
+      (rule)
+      (heading :text "NOTAE")
+      (scroll :class "tasklist" :vscroll true :hscroll false :height 150
+        (box :orientation "v" :space-evenly false :spacing 4
+          (label :class "sub" :visible "${arraylength(tasks) == 0}" :text "Nihil adhuc scriptum.")
+          (for t in tasks
+            (task-row :id "${t.id}" :text "${t.text}" :done "${t.done}"))))
+      (box :class "transport" :orientation "h" :halign "center" :space-evenly false :spacing 12
+        (button :class "tbtn" :onclick "$HOME/.config/hexenwald/bin/tasks prompt-add" "NOVA NOTA")
+        (button :class "tbtn" :onclick "$HOME/.config/hexenwald/bin/tasks clear-done" "PURGA")))))
+
+(defwindow memento
+  :monitor 0
+  :stacking "overlay"
+  :focusable "none"
+  :namespace "hexenwald-memento"
+  :geometry (geometry :x "0px" :y "0px" :width "400px" :height "640px" :anchor "center")
+  (memento))

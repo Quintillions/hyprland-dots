@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Waybar helper: shows QUIES while Mako is in do-not-disturb mode, nothing otherwise.
+if makoctl mode 2>/dev/null | grep -qx 'do-not-disturb'; then
+    printf '{"text":"QUIES","class":"on","tooltip":"Do not disturb is on"}\n'
+else
+    printf '{"text":""}\n'
+fi

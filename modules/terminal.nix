@@ -57,15 +57,17 @@
 
   programs.alacritty = {
     enable = true;
-    # theme = "catppuccin_macchiato";
     settings = {
-      general.import = ["~/.cache/wallust/alacritty-colors.toml"];
+      # Fixed Hexenwald palette first, then the wallust accent (cursor only) on top.
+      general.import = [
+        "~/.config/hexenwald/alacritty-colors.toml"
+        "~/.cache/wallust/alacritty-accent.toml"
+      ];
 
       font = {
         normal = {
-          family = "JetBrainsMono Nerd Font";
+          family = "IosevkaTermSlab Nerd Font";
           style = "Regular";
-               
         };
 
         size = 12;
@@ -77,7 +79,7 @@
         }; 
         decorations = "none";
         dynamic_title = true;
-        opacity = 0.5;
+        opacity = 0.92;
       };
 
 

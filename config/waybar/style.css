@@ -1,0 +1,74 @@
+/* WALPURGISNACHT: HEXENWALD — Waybar
+   accent.css is written by wallust at runtime (see wallust.nix); it defines @accent only. */
+@import "accent.css";
+
+@define-color tiefwald  #111713;
+@define-color moos      #26372B;
+@define-color tanne     #354A38;
+@define-color efeu      #52664A;
+@define-color bronze    #927B4F;
+@define-color pergament #C4B99B;
+@define-color nebel     #858B7C;
+@define-color kohle     #202521;
+@define-color mondlicht #D5D4C3;
+@define-color rost      #C4705A; /* urgent / error only: an addition to the nine-colour palette */
+
+* {
+  font-family: "IM Fell English", "Noto Serif", serif;
+  font-size: 14px;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+}
+
+window#waybar { background: transparent; color: @pergament; }
+
+.modules-left, .modules-center, .modules-right {
+  background: @kohle;
+  border: 1px solid @bronze;
+  border-radius: 2px;
+  padding: 0 10px;
+}
+
+#workspaces button {
+  padding: 0 9px;
+  margin: 3px 1px;
+  color: @nebel;
+  background: transparent;
+  font-family: "Noto Sans Runic", "Junicode", serif;
+  font-size: 17px;
+  box-shadow: none;
+  text-shadow: none;
+}
+#workspaces button:hover { background: @moos; color: @mondlicht; box-shadow: none; text-shadow: none; }
+#workspaces button.active {
+  background: @efeu;
+  color: @mondlicht;
+  border-bottom: 2px solid @accent;
+}
+#workspaces button.urgent { color: @rost; }
+
+#custom-dies { color: @pergament; letter-spacing: 2px; padding: 0 8px 0 0; }
+#clock { color: @mondlicht; font-weight: bold; padding: 0 0 0 8px; }
+
+#cpu, #memory, #pulseaudio, #network, #battery, #custom-dnd, #custom-minimized {
+  color: @pergament;
+  padding: 0 8px;
+  letter-spacing: 1px;
+}
+#pulseaudio.muted, #network.disconnected { color: @nebel; }
+#battery.warning { color: @bronze; }
+#battery.critical { color: @rost; }
+#custom-dnd { color: @mondlicht; background: @tanne; }
+#custom-minimized { color: @bronze; }
+#custom-minimized:hover { color: @mondlicht; }
+
+#tray { padding: 0 6px; }
+#tray > .passive { -gtk-icon-effect: dim; }
+#tray > .needs-attention { -gtk-icon-effect: highlight; }
+
+#custom-power { color: @bronze; letter-spacing: 2px; padding: 0 4px 0 10px; }
+#custom-power:hover { color: @mondlicht; }
+
+tooltip { background: @kohle; border: 1px solid @bronze; color: @pergament; }
+tooltip label { color: @pergament; }

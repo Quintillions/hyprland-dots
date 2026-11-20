@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Windows parked on special:minimized (SUPER+M).
+#   minimized           -> Waybar JSON (empty text when nothing is parked)
+#   minimized restore   -> pick one in Rofi and move it back to the active workspace
+set -u
+list() { hyprctl clients -j 2>/dev/null | jq -c '[.[] | select(.workspace.name == "special:minimized")]'; }
+
+case "${1:-status}" in
+    status)
+        n=$(list | jq 'length')
+        if [ "${n:-0}" -gt 0 ]; then
+            jq -nc --argjson n "$n" --arg tip "$(list | jq -r 'map("\(.class) — \(.title)") | join("\n")')" \
+                '{text:"VELATA \($n)", tooltip:$tip, class:"parked"}'
+        else
+            printf '{"text":""}\n'
+        fi ;;
+    restore)
+        mapfile -t rows < <(list | jq -r '.[] | "\(.class) — \(.title)"')
+        [ "${#rows[@]}" -gt 0 ] || exit 0
+        pick=$(printf '%s\n' "${rows[@]}" | rofi -dmenu -i -format i -p "Restituere" -theme hexenwald) || exit 0
+        addr=$(list | jq -r --argjson i "$pick" '.[$i].address')
+        ws=$(hyprctl activeworkspace -j | jq -r '.id')
+        [ -n "$addr" ] && hyprctl dispatch "hl.dsp.window.move({ workspace = $ws, window = \"address:$addr\" })" ;;
+esac

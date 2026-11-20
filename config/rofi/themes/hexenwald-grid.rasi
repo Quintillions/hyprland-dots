@@ -1,0 +1,9 @@
+/* Thumbnail grid (wallpaper picker). */
+@import "hexenwald"
+window   { width: 980px; }
+mainbox  { children: [ header, inputbar, listview ]; }
+listview { columns: 4; lines: 3; spacing: 10px; flow: horizontal; }
+element  { orientation: vertical; padding: 8px; border: 1px; border-color: @moos; }
+element selected.normal { border: 1px; border-color: @bronze; }
+element-icon { size: 180px; horizontal-align: 0.5; }
+element-text { horizontal-align: 0.5; font: "IM Fell English 12"; }

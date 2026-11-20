@@ -43,11 +43,6 @@ hl.window_rule({
 })
 
 hl.window_rule({
-    name  = "float-terminal",
-    match = { class = "[Aa]lacritty"},
-})
-
-hl.window_rule({
     name  = "float-spotify",
     match = { class = "[Ss]potify" },
     float = false,

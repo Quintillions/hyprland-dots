@@ -1,3 +1,2 @@
 #!/bin/sh
-mon=$(hyprctl activeworkspace -j | jq -r '.monitor')
-qs -c pill ipc call pill clipboard "$mon"
+exec "$HOME/.config/rofi/scripts/clipboard.sh"

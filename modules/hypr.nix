@@ -22,7 +22,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    inputs.quickshell.packages.${pkgs.system}.default
     inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
     wireplumber
     libva

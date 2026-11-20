@@ -11,5 +11,5 @@
     };
   };
 
-  services.getty.autologinUser = "quin";
+  # Login prompt at boot: ly is the only display manager and does not autologin.
 }

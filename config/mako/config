@@ -1,0 +1,55 @@
+# WALPURGISNACHT: HEXENWALD — Mako
+font=IM Fell English 12
+background-color=#202521
+text-color=#C4B99B
+border-color=#927B4F
+border-size=2
+border-radius=2
+progress-color=over #52664A
+padding=12
+margin=10
+width=360
+height=160
+anchor=top-right
+layer=overlay
+icons=1
+max-icon-size=40
+max-visible=4
+default-timeout=7000
+ignore-timeout=0
+group-by=app-name,urgency
+markup=1
+actions=1
+format=<b>%s</b>\n%b
+
+# Left click runs the default action, right click dismisses, middle click dismisses all.
+on-button-left=invoke-default-action
+on-button-middle=dismiss-all
+on-button-right=dismiss
+
+# Low priority: quiet, short, no emphasis.
+[urgency=low]
+text-color=#858B7C
+border-color=#354A38
+default-timeout=4000
+
+# Urgent: terracotta border, stays until dismissed.
+[urgency=critical]
+background-color=#202521
+text-color=#D5D4C3
+border-color=#C4705A
+border-size=3
+default-timeout=0
+
+# Toggle with: makoctl mode -t do-not-disturb  (the bar shows QUIES while it is on)
+[mode=do-not-disturb]
+invisible=1
+
+# Urgent notifications still break through do-not-disturb.
+[mode=do-not-disturb urgency=critical]
+invisible=0
+
+# Volume / brightness style notifications replace themselves instead of stacking.
+[category=osd]
+default-timeout=1500
+group-by=category

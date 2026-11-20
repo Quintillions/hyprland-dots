@@ -1,0 +1,5 @@
+/* Single-line text prompt (task add/edit): no list, just the input. */
+@import "hexenwald"
+window   { width: 460px; }
+mainbox  { children: [ inputbar ]; padding: 14px 16px; }
+listview { enabled: false; }

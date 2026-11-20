@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# MPRIS (MPD via mpd-mpris, Spotify, browsers...) status for Tabula Obscura via playerctl.
+set -u
+fmt() { local s=${1%.*}; printf '%d:%02d' $(( s / 60 )) $(( s % 60 )); }
+
+line=$(playerctl metadata --format '{{status}}|{{title}}|{{artist}}|{{position}}|{{mpris:length}}' 2>/dev/null) || line=""
+if [ -z "$line" ]; then
+    jq -nc '{active:false,title:"Silentium",artist:"Nulla musica",status:"Stopped",elapsed:"0:00",total:"0:00",pct:0}'
+    exit 0
+fi
+IFS='|' read -r status title artist pos len <<<"$line"
+pos=${pos:-0}; len=${len:-0}
+pct=0; (( len > 0 )) && pct=$(( pos * 100 / len ))
+jq -nc --arg status "$status" --arg title "${title:-Sine titulo}" --arg artist "${artist:-Artifex ignotus}" \
+       --arg elapsed "$(fmt $(( pos / 1000000 )))" --arg total "$(fmt $(( len / 1000000 )))" --argjson pct "$pct" \
+       '{active:true,title:$title,artist:$artist,status:$status,elapsed:$elapsed,total:$total,pct:$pct}'

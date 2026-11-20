@@ -1,14 +1,7 @@
-local home = os.getenv("HOME")
-local ok, wc = pcall(dofile, home .. "/.cache/wallust/hypr-colors.lua")
-if not ok then wc = nil end
-
-local function border(hex, fallback)
-    if type(hex) ~= "string" then hex = fallback end
-    return "rgb(" .. hex:gsub("#", "") .. ")"
-end
-
-local active   = border(wc and wc.active, "#e0563b")
-local inactive = border(wc and wc.inactive, "#313a4d")
+-- WALPURGISNACHT: HEXENWALD window styling. Borders use the fixed palette (Bronze / Moos);
+-- wallust only supplies accents elsewhere (Waybar underline, terminal cursor).
+local active   = "rgb(927B4F)"
+local inactive = "rgb(26372B)"
 
 hl.config({
     general = {
@@ -29,15 +22,15 @@ hl.config({
         focus_fit_method      = 0,
     },
     decoration = {
-        rounding         = 12,
+        rounding         = 4,
         rounding_power   = 4,
         active_opacity   = 1,
-        inactive_opacity = 0.90,
+        inactive_opacity = 0.95,
         shadow = {
             enabled      = true,
             range        = 12,
             render_power = 3,
-            color        = 0xaa14110f,
+            color        = 0xaa0b0f0c,
         },
         blur = {
             enabled           = true,
@@ -53,34 +46,4 @@ hl.config({
         disable_hyprland_logo   = false,
         disable_splash_rendering = true,
     },
-})
-
-hl.layer_rule({
-    name    = "topbar-power-noanim",
-    match   = { namespace = "topbar-power" },
-    no_anim = true,
-})
-
-hl.layer_rule({
-    name    = "topbar-calendar-noanim",
-    match   = { namespace = "topbar-calendar" },
-    no_anim = true,
-})
-
-hl.layer_rule({
-    name    = "topbar-tray-noanim",
-    match   = { namespace = "topbar-tray" },
-    no_anim = true,
-})
-
-hl.layer_rule({
-    name    = "sidebar-noanim",
-    match   = { namespace = "sidebar" },
-    no_anim = true,
-})
-
-hl.layer_rule({
-    name    = "sidebar-inhibit-noanim",
-    match   = { namespace = "sidebar-inhibit" },
-    no_anim = true,
 })

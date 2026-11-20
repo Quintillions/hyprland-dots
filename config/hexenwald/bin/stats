@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+# System readings for Tabula Obscura. Prints one JSON object.
+set -u
+
+cpu_usage() {
+    local a b idle1 total1 idle2 total2
+    read -r -a a < /proc/stat
+    idle1=$(( a[4] + a[5] )); total1=0; for x in "${a[@]:1:8}"; do total1=$(( total1 + x )); done
+    sleep 0.3
+    read -r -a b < /proc/stat
+    idle2=$(( b[4] + b[5] )); total2=0; for x in "${b[@]:1:8}"; do total2=$(( total2 + x )); done
+    local dt=$(( total2 - total1 )) di=$(( idle2 - idle1 ))
+    (( dt > 0 )) && echo $(( 100 * (dt - di) / dt )) || echo 0
+}
+
+memory() {
+    awk '/^MemTotal:/ {t=$2} /^MemAvailable:/ {a=$2} END {printf "%.1f / %.1f GiB", (t-a)/1048576, t/1048576}' /proc/meminfo
+}
+
+temperature() {
+    local d name t
+    for want in k10temp zenpower coretemp; do
+        for d in /sys/class/hwmon/hwmon*; do
+            [ -r "$d/name" ] || continue
+            name=$(<"$d/name")
+            [ "$name" = "$want" ] || continue
+            t=$d/temp1_input
+            [ -r "$t" ] && { printf '%d°C' $(( $(<"$t") / 1000 )); return; }
+        done
+    done
+    printf '—'
+}
+
+battery() {
+    local b
+    for b in /sys/class/power_supply/BAT*; do
+        [ -r "$b/capacity" ] || continue
+        local sign=""
+        case "$(<"$b/status")" in Charging) sign=" +" ;; Discharging) sign=" −" ;; esac
+        printf '%s%%%s' "$(<"$b/capacity")" "$sign"
+        return
+    done
+}
+
+network() {
+    command -v nmcli >/dev/null 2>&1 || { printf '—'; return; }
+    nmcli -t -f TYPE,STATE,CONNECTION device status 2>/dev/null |
+        awk -F: '$2=="connected" && ($1=="ethernet"||$1=="wifi") {
+            c=$3; for(i=4;i<=NF;i++) c=c":"$i; gsub(/\\/,"",c);
+            print (($1=="wifi") ? c : "Ethernet · " c); found=1; exit }
+          END { if (!found) print "—" }' | tr -d '\n'
+}
+
+jq -nc --arg cpu "$(cpu_usage)%" --arg mem "$(memory)" --arg temp "$(temperature)" \
+       --arg bat "$(battery)" --arg net "$(network)" \
+       '{cpu:$cpu, mem:$mem, temp:$temp, bat:$bat, net:$net}'
