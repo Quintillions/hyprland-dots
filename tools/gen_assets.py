@@ -131,4 +131,15 @@ write("hourglass.svg", f'''
   {HG}
   <g transform="translate(220 0) scale(-1 1)">{HG}</g>
 </svg>''')
+
+# ---------- compact corner marks for the Waybar islands (second optional argument = output dir) ----------
+if len(sys.argv) > 2:
+    BAR = pathlib.Path(sys.argv[2]); BAR.mkdir(parents=True, exist_ok=True)
+    mark = (f'<path d="M1 15 V1 H15" fill="none" stroke="{BRONZE}" stroke-width="1.4" stroke-linecap="square"/>'
+            f'<path d="M5 2.6 l2.4 2.4 l-2.4 2.4 l-2.4 -2.4Z" fill="{MOND}"/>')
+    for name, tf in (("tl", ""), ("tr", ' transform="translate(16 0) scale(-1 1)"'),
+                     ("bl", ' transform="translate(0 16) scale(1 -1)"'), ("br", ' transform="translate(16 16) scale(-1 -1)"')):
+        (BAR / f"bar-corner-{name}.svg").write_text(
+            f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><g{tf}>{mark}</g></svg>\n')
+    print("bar corners written to", BAR)
 print("assets written to", OUT)

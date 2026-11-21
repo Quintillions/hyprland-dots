@@ -1,8 +1,8 @@
 {config, pkgs, ...}:
 {
   boot = {
-    kernelModules = [ "uinput" ];
-    
+    # uinput is loaded by hardware.uinput.enable (configuration.nix)
+
     initrd.kernelModules = [ "amdgpu" ];
     
     loader = {

@@ -32,14 +32,9 @@
         pavucontrol
         gsmartcontrol
         smartmontools
-      
-        
 
+        # cloudflare-warp and flatpak are installed by services.cloudflare-warp / services.flatpak.
 
-        # ─────────────────────────────
-
-        cloudflare-warp
-        flatpak
         vesktop
         jdk21_headless
       ];

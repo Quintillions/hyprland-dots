@@ -23,14 +23,11 @@
 
   environment.systemPackages = with pkgs; [
     inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
-    wireplumber
     libva
     intel-media-driver
 
 
-    hyprpaper
     hyprpicker
-    hypridle
     jq
     imagemagick
     grim

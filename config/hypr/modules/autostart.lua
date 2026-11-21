@@ -6,7 +6,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("mako")
     hl.exec_cmd(scripts .. "waybar.sh")
     hl.exec_cmd("obs --startreplaybuffer --disable-shutdown-check")
-    hl.exec_cmd("otd-daemon &")
+    -- otd-daemon runs as the opentabletdriver user service (hardware.opentabletdriver.daemon.enable)
     -- hypridle runs as the NixOS user service (services.hypridle.enable); only jdsp4linux stays here.
     hl.exec_cmd("me.timschneeberger.jdsp4linux -t")
 end)

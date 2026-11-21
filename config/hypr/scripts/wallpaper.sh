@@ -91,4 +91,4 @@ printf '%s\n' "$pic" > "$STATE"
 wallust run "$pic" >/dev/null 2>&1 || true
 # Hexenwald: let Waybar pick up the new accent.css
 pkill -SIGUSR2 waybar >/dev/null 2>&1 || true
-hyprctl reload >/dev/null 2>&1 || true
+# (hyprctl reload removed: borders no longer depend on wallust, and a reload stutters the whole desktop)

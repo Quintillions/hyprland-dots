@@ -15,7 +15,8 @@
 
 * {
   font-family: "IM Fell English", "Noto Serif", serif;
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: normal;   /* IM Fell has no bold: a synthesised bold looks wrong */
   border: none;
   border-radius: 0;
   min-height: 0;
@@ -23,22 +24,37 @@
 
 window#waybar { background: transparent; color: @pergament; }
 
+/* The three islands share the Tabula Obscura frame: bronze rule, inner hairline, leaf-diamond corners. */
 .modules-left, .modules-center, .modules-right {
-  background: @kohle;
+  background-color: @kohle;
+  background-image: url("assets/bar-corner-tl.svg"), url("assets/bar-corner-tr.svg"),
+                    url("assets/bar-corner-bl.svg"), url("assets/bar-corner-br.svg");
+  background-position: left top, right top, left bottom, right bottom;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
   border: 1px solid @bronze;
-  border-radius: 2px;
-  padding: 0 10px;
+  /* GTK paints inset shadows in the order listed (CSS paints the first on top): band first, gap second. */
+  box-shadow: inset 0 0 0 4px rgba(146, 123, 79, 0.45), inset 0 0 0 3px @kohle;
+  padding: 0 16px;
 }
 
+/* Workspaces: Elder Futhark, large */
 #workspaces button {
-  padding: 0 9px;
-  margin: 3px 1px;
+  padding: 0 12px;
+  margin: 5px 2px;
+  min-width: 26px;
   color: @nebel;
   background: transparent;
   font-family: "Noto Sans Runic", "Junicode", serif;
-  font-size: 17px;
+  font-size: 26px;
   box-shadow: none;
   text-shadow: none;
+}
+/* The glyph lives in a label child; the global * rule sets that label's size, so size it explicitly. */
+#workspaces button label {
+  font-family: "Noto Sans Runic", "Junicode", serif;
+  font-size: 26px;
+  padding: 0;
 }
 #workspaces button:hover { background: @moos; color: @mondlicht; box-shadow: none; text-shadow: none; }
 #workspaces button.active {
@@ -48,12 +64,23 @@ window#waybar { background: transparent; color: @pergament; }
 }
 #workspaces button.urgent { color: @rost; }
 
-#custom-dies { color: @pergament; letter-spacing: 2px; padding: 0 8px 0 0; }
-#clock { color: @mondlicht; font-weight: bold; padding: 0 0 0 8px; }
+/* Centre island: time | Latin date, one unit */
+#clock {
+  color: @mondlicht;
+  font-size: 24px;
+  padding: 0 14px 0 4px;
+  border-right: 1px solid rgba(146, 123, 79, 0.6);
+}
+#custom-dies {
+  color: @pergament;
+  font-size: 15px;
+  letter-spacing: 3px;
+  padding: 0 4px 0 14px;
+}
 
 #cpu, #memory, #pulseaudio, #network, #battery, #custom-dnd, #custom-minimized {
   color: @pergament;
-  padding: 0 8px;
+  padding: 0 9px;
   letter-spacing: 1px;
 }
 #pulseaudio.muted, #network.disconnected { color: @nebel; }
@@ -67,7 +94,7 @@ window#waybar { background: transparent; color: @pergament; }
 #tray > .passive { -gtk-icon-effect: dim; }
 #tray > .needs-attention { -gtk-icon-effect: highlight; }
 
-#custom-power { color: @bronze; letter-spacing: 2px; padding: 0 4px 0 10px; }
+#custom-power { color: @bronze; letter-spacing: 2px; padding: 0 4px 0 12px; }
 #custom-power:hover { color: @mondlicht; }
 
 tooltip { background: @kohle; border: 1px solid @bronze; color: @pergament; }

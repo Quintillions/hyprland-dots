@@ -21,9 +21,8 @@
     zoom-us
     prismlauncher
     chromium
-    mpd
+    # mpd is installed by services.mpd (modules/mpd.nix)
 
   ];
 
 }
-

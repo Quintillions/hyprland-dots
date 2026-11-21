@@ -33,7 +33,7 @@
     { "type": "wm", "key": " wm", "format": "{pretty-name}" },
     { "type": "shell", "key": " shell", "format": "{exe-name}" },
     { "type": "terminal", "key": " term", "format": "{pretty-name}" },
-    { "type": "custom", "key": "󰐂 bar", "format": "pill (quickshell)" },
+    { "type": "custom", "key": "󰐂 bar", "format": "FUCK YOU FUCKING FUCK FUCK" },
     { "type": "custom", "key": "󰄀 shot", "format": "grim + slurp + satty" },
     { "type": "font", "key": "󱀍 font", "format": "{2}" },
     "break",

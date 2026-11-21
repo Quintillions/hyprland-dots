@@ -2,14 +2,14 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 34,
+  "height": 44,
   "margin-top": 6,
   "margin-left": 12,
   "margin-right": 12,
   "spacing": 10,
 
   "modules-left": ["hyprland/workspaces", "custom/minimized"],
-  "modules-center": ["custom/dies", "clock"],
+  "modules-center": ["clock", "custom/dies"],
   "modules-right": ["custom/dnd", "cpu", "memory", "pulseaudio", "network", "battery", "tray", "custom/power"],
 
   // Elder Futhark labels are purely visual; workspace IDs stay 1-5.

@@ -5,6 +5,7 @@
   xdg.configFile = {
     "waybar/config.jsonc".source = ../config/waybar/config.jsonc;
     "waybar/style.css".source    = ../config/waybar/style.css;
+    "waybar/assets".source       = ../config/waybar/assets;
     "mako/config".source         = ../config/mako/config;
     "rofi".source                = ../config/rofi;
     "eww".source                 = ../config/eww;
